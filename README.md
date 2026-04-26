@@ -1,6 +1,6 @@
 ## Davina Titus — Personal Portfolio 
 
-🌐 **Live Site:** [davina-titus.github.io](https://davina-titus.github.io)
+🌐 **Live Site:** http://davinatitus.com/
 
 ## About
 Personal portfolio website for Davina Titus — sophomore Computer Science student 
