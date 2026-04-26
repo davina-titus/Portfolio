@@ -3,8 +3,7 @@
 🌐 **Live Site:** http://davinatitus.com/
 
 ## About
-Personal portfolio website for Davina Titus — sophomore Computer Science student 
-at the University of Illinois Chicago and Generative AI Project Intern at Ernst & Young (EY).
+Personal portfolio website for Davina Titus 
 
 Built to showcase my experience, projects, and technical skills to recruiters and collaborators.
 
@@ -23,7 +22,7 @@ Built to showcase my experience, projects, and technical skills to recruiters an
 ## Connect
 - 🔗 [LinkedIn](https://www.linkedin.com/in/davina-titus-855199254/)
 - 💻 [GitHub](https://github.com/davina-titus)
-- 🌐 [Portfolio](https://davina-titus.github.io)
+- 🌐 [Portfolio](http://davinatitus.com/)
 
 ---
 Sophomore CS Student · EY Generative AI Intern · UIC College of Engineering
