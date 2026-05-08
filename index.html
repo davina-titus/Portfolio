@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Davina Titus - Portfolio</title>
+<title>Davina Titus — Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Josefin+Sans:wght@100;200;300;400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -85,17 +85,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 72px;height:68px;d
 /* ─ NAME: single unified Cormorant string, no split ─ */
 .hero-name{
   font-family:var(--fd);
-  font-size:clamp(58px,7vw,110px);
+  font-size:clamp(72px,10vw,148px);
   font-weight:300;
-  line-height:.92;
-  letter-spacing:.01em;
+  line-height:.88;
+  letter-spacing:.02em;
   color:var(--ivory);
   opacity:0;
   animation:fU 1.2s 2s var(--ease) forwards;
   display:block;
   white-space:nowrap;
-  margin-top:-20px;
-  margin-bottom:18px;
 }
 /* The italic 'profession' tagline below the name */
 .hero-subtitle{
@@ -272,6 +270,10 @@ footer small{font-family:var(--fs);font-size:9px;font-weight:200;letter-spacing:
   .hero-photo-wrap { display: none; }
 }
 
+
+
+
+
 /* ── CONTACT FORM ────────────────────────── */
 .conn-form {
   margin-top: 52px;
@@ -440,7 +442,7 @@ footer small{font-family:var(--fs);font-size:9px;font-weight:200;letter-spacing:
 }
 
 /* ── EY BADGE ────────────────────────────── */
-/*.ey-badge {
+.ey-badge {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -502,7 +504,7 @@ footer small{font-family:var(--fs);font-size:9px;font-weight:200;letter-spacing:
 @keyframes pulse {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: .4; transform: scale(0.7); }
-} */
+}
 
 /* ── EY EXPERIENCE CARD HIGHLIGHT ────────── */
 .exp-item.ey-featured {
@@ -532,7 +534,7 @@ footer small{font-family:var(--fs);font-size:9px;font-weight:200;letter-spacing:
   letter-spacing: .04em;
 }
 
-/* ── ART IMAGE ───────────────────────────── 
+/* ── ART IMAGE ───────────────────────────── */
 .bnd-art-img {
   width: 100%;
   border: 1px solid var(--border);
@@ -544,7 +546,7 @@ footer small{font-family:var(--fs);font-size:9px;font-weight:200;letter-spacing:
 .bnd-card:hover .bnd-art-img {
   filter: grayscale(0%) contrast(1.1);
   border-color: var(--gold-dim);
-} 
+}
 
 /* ── RESUME BUTTON ───────────────────────── */
 .resume-btn {
@@ -577,6 +579,27 @@ footer small{font-family:var(--fs);font-size:9px;font-weight:200;letter-spacing:
   stroke-width: 2;
   flex-shrink: 0;
 }
+
+
+/* ── TECHNICAL CREDIBILITY ADDITIONS ─────── */
+.quick-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:28px}
+.quick-card{background:var(--panel);border:1px solid var(--border);padding:22px 24px;transition:border-color .3s,transform .3s var(--ease)}
+.quick-card:hover{border-color:var(--gold-dim);transform:translateY(-3px)}
+.quick-k{font-family:var(--fs);font-size:8px;font-weight:200;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.quick-v{font-family:var(--fd);font-size:18px;font-weight:500;color:var(--ivory);line-height:1.35}
+.current-strip{margin-top:2px;background:linear-gradient(135deg,rgba(201,168,76,.055),var(--panel));border:1px solid var(--border);padding:24px 30px;display:flex;gap:18px;align-items:flex-start}
+.current-strip .loc-ic{width:42px;height:42px;font-size:18px}
+.current-title{font-family:var(--fd);font-size:20px;color:var(--ivory);font-weight:500}
+.current-text{font-size:15px;color:var(--mist);line-height:1.75;margin-top:4px}
+.project-deep{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px;max-width:760px}
+.pd-card{border:1px solid rgba(201,168,76,.14);background:rgba(7,6,10,.18);padding:16px 18px;position:relative;z-index:5}
+.pd-k{font-family:var(--fs);font-size:8px;font-weight:300;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.pd-v{font-size:14.5px;line-height:1.65;color:var(--mist)}
+.stack-strip{margin-top:28px;background:var(--surface);border:1px solid var(--border);padding:26px 30px}
+.stack-title{font-family:var(--fs);font-size:9px;font-weight:200;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.stack-line{font-family:var(--fd);font-size:22px;color:var(--ivory);line-height:1.45}
+.stack-note{font-size:15px;color:var(--mist);margin-top:8px;line-height:1.75}
+@media(max-width:960px){.quick-grid,.project-deep{grid-template-columns:1fr}.current-strip{flex-direction:column}}
 
 /* ── REVEAL ──────────────────────────────── */
 .reveal{opacity:0;transform:translateY(34px);transition:opacity .95s var(--ease),transform .95s var(--ease)}
@@ -637,19 +660,19 @@ footer small{font-family:var(--fs);font-size:9px;font-weight:200;letter-spacing:
 
   <div class="hero-inner">
     <div>
-      <!-- EY Badge 
+      <!-- EY Badge -->
       <div class="ey-badge">
         <span class="ey-logo">EY</span>
         <div class="ey-badge-text">
-          <!--<span class="ey-badge-title">Internship Experience</span>
+          <!--<span class="ey-badge-title">Internship Experience</span>-->
           <span class="ey-badge-sub">Generative AI R&amp;D · Ernst &amp; Young</span>
         </div>
         <div class="ey-pulse"></div>
-      </div> -->
+      </div>
 
       <!-- Unified name — single font, no splits -->
       <span class="hero-name">Davina Titus</span>
-      <p class="hero-desc">Full-stack developer with a focus on AI-driven systems, robust backend architecture, and thoughtfully designed interfaces. EY Generative AI intern. Builder of <a href="https://youtu.be/glDdiWyR_kc?si=kYp1arZh65h2Ur-7" target="_blank" style="color:var(--gold);text-decoration:none;">ParallelYou</a>, <a href="https://chi-metrics.vercel.app/" target="_blank" style="color:var(--gold);text-decoration:none;">ChiMetrics</a>. Dean's List, College of Engineering.</p>
+      <p class="hero-desc">Software engineer building AI-powered full-stack systems with React, TypeScript, Python, Node.js, and LLM evaluation workflows. EY Generative AI R&amp;D intern. Builder of <a href="https://youtu.be/glDdiWyR_kc?si=kYp1arZh65h2Ur-7" target="_blank" style="color:var(--gold);text-decoration:none;">ParallelYou</a>, <a href="https://chi-metrics.vercel.app/" target="_blank" style="color:var(--gold);text-decoration:none;">ChiMetrics</a>, and data-driven tools for real users.</p>
       <div class="hero-acts">
         <a href="#projects" class="btn-gold">View My Work</a>
         <a href="#connect" class="btn-ghost">Get in Touch</a>
@@ -690,23 +713,36 @@ footer small{font-family:var(--fs);font-size:9px;font-weight:200;letter-spacing:
       <h2 class="sh reveal">Building with <em>precision,</em><br>designing with purpose</h2>
       <div class="bquote reveal">"The best software is invisible — it simply works, beautifully and reliably."</div>
       <div class="about-body reveal">
-        <p>I am a Computer Science student at the University of Illinois Chicago, specializing in Software Engineering. Last summer I worked on the Generative AI R&amp;D team at Ernst &amp; Young — architecting structured datasets, benchmarking LLM outputs across GPT-4, Claude, and Llama, and contributing to measurable improvements in AI response quality for enterprise clients.</p>
-        <p>My strengths span full-stack development, intelligent system design, and data engineering. I approach every project with an engineer's rigour and a designer's sensibility — whether that means shipping a production-ready AI platform in 24 hours at a hackathon or optimizing GenAI pipelines across 15+ client use cases.</p>
-        <p>I am a collaborative, detail-oriented professional with a global perspective shaped by extensive international travel, and a genuine passion for technology that creates meaningful impact.</p>
+        <p>I am a Computer Science student at the University of Illinois Chicago specializing in software engineering, AI systems, and human-centered technology. At Ernst &amp; Young, I worked on Generative AI R&amp;D by structuring evaluation datasets, comparing GPT-4, Claude, and Llama outputs, and refining prompt workflows across enterprise automation use cases.</p>
+        <p>My strongest work sits at the intersection of full-stack engineering, data visualization, and LLM-powered products. I like building systems that are technically solid, visually polished, and easy for people to actually use.</p>
+        <p>Currently, I am expanding into HCI and VR research, analyzing how students interact with physics labs in virtual reality and translating behavioral data into meaningful research insights.</p>
+        <div class="quick-grid reveal d1">
+          <div class="quick-card"><div class="quick-k">Strongest Stack</div><div class="quick-v">React · TypeScript · Python · Node.js</div></div>
+          <div class="quick-card"><div class="quick-k">Focus</div><div class="quick-v">AI Systems · Data Viz · HCI</div></div>
+          <div class="quick-card"><div class="quick-k">Education</div><div class="quick-v">UIC CS · Software Engineering</div></div>
+          <div class="quick-card"><div class="quick-k">Recognition</div><div class="quick-v">Dean's List · College of Engineering</div></div>
+        </div>
       </div>
     </div>
     <div style="padding-top:24px">
       <div class="sq reveal">
-        <div class="sc"><div class="sc-n">3.54</div><div class="sc-l">GPA</div></div>
-        <div class="sc"><div class="sc-n">35<sup style="font-size:.38em">%</sup></div><div class="sc-l">Prompt Effectiveness ↑</div></div>
-        <div class="sc"><div class="sc-n">50<sup style="font-size:.38em">+</sup></div><div class="sc-l">LLM Improvements</div></div>
-        <div class="sc"><div class="sc-n">24h</div><div class="sc-l">Hackathon Build</div></div>
+        <div class="sc"><div class="sc-n">3</div><div class="sc-l">Deployed Apps</div></div>
+        <div class="sc"><div class="sc-n">15<sup style="font-size:.38em">+</sup></div><div class="sc-l">GenAI Use Cases</div></div>
+        <div class="sc"><div class="sc-n">500<sup style="font-size:.38em">+</sup></div><div class="sc-l">Structured Data Items</div></div>
+        <div class="sc"><div class="sc-n">2028</div><div class="sc-l">Expected Graduation</div></div>
       </div>
       <div class="loc-row reveal d2">
         <div class="loc-ic">✦</div>
         <div>
           <div class="loc-t">Chicago, Illinois</div>
-          <div class="loc-s">Open to Internships &amp; Full-Time Opportunities</div>
+          <div class="loc-s">Open to SWE, AI, HCI &amp; Research Opportunities</div>
+        </div>
+      </div>
+      <div class="current-strip reveal d3">
+        <div class="loc-ic">⌁</div>
+        <div>
+          <div class="current-title">Currently working on VR/HCI research</div>
+          <div class="current-text">Coding and interpreting video data from students completing physics labs in VR, with a focus on interaction patterns, learning behavior, and research-grade qualitative analysis.</div>
         </div>
       </div>
     </div>
@@ -738,9 +774,9 @@ footer small{font-family:var(--fs);font-size:9px;font-weight:200;letter-spacing:
         </div>
       </div>
       <ul class="ei-bul">
-        <li>Architected 500+ structured datasets and optimized prompts for a GenAI automation platform across 15+ client use cases, increasing prompt effectiveness by 35%.</li>
-        <li>Benchmarked LLM outputs across GPT-4, Claude, and Llama — documenting 50+ targeted improvements and accelerating team knowledge transfer by 40%.</li>
-        <li>Collaborated with senior engineers to refine system configuration, contributing to a 20% improvement in overall AI response quality.</li>
+        <li>Built and organized 500+ structured evaluation data items for a GenAI automation platform spanning 15+ enterprise use cases.</li>
+        <li>Benchmarked GPT-4, Claude, and Llama outputs to identify failure patterns, compare response quality, and document 50+ targeted prompt and configuration improvements.</li>
+        <li>Collaborated with senior engineers to refine system behavior, prompt structure, and evaluation workflows for more consistent AI responses.</li>
       </ul>
       <div class="ei-tags">
         <span class="ei-tag">OpenAI GPT-4</span><span class="ei-tag">Claude</span><span class="ei-tag">Llama</span>
@@ -748,25 +784,25 @@ footer small{font-family:var(--fs);font-size:9px;font-weight:200;letter-spacing:
       </div>
     </div>
 
-    <!--
     <div class="exp-item reveal d1">
       <div class="ei-header">
         <div>
-          <div class="ei-role">Research Participant - HCI Study</div>
-          <div class="ei-co">UIC Computer Science Department</div>
+          <div class="ei-role">Research Assistant — VR Physics Learning Study</div>
+          <div class="ei-co">UIC Learning Sciences / HCI Research</div>
         </div>
         <div class="ei-meta">
-          <div class="ei-date">February 2026</div>
+          <div class="ei-date">May 2026 – Present</div>
           <div class="ei-loc">Chicago, IL</div>
         </div>
       </div>
       <ul class="ei-bul">
-        <li>Participated in a human-computer interaction research study examining collaborative data visualization, contributing insights to ongoing academic research at UIC.</li>
+        <li>Analyze video data of students completing physics labs in virtual reality, coding interaction patterns and interpreting student behavior for ongoing academic research.</li>
+        <li>Collaborate with researchers to connect observed VR actions with learning outcomes, usability patterns, and human-computer interaction insights.</li>
       </ul>
       <div class="ei-tags">
-        <span class="ei-tag">HCI</span><span class="ei-tag">Data Visualization</span><span class="ei-tag">Research</span>
+        <span class="ei-tag">VR Research</span><span class="ei-tag">HCI</span><span class="ei-tag">Qualitative Coding</span><span class="ei-tag">Physics Education</span>
       </div>
-    </div> 
+    </div>
 <!--
     <div class="exp-item reveal d2">
       <div class="ei-header">
@@ -814,6 +850,10 @@ footer small{font-family:var(--fs);font-size:9px;font-weight:200;letter-spacing:
           <div class="pi-tags">
             <span class="pi-tag">React</span><span class="pi-tag">Vite</span><span class="pi-tag">Recharts</span><span class="pi-tag">Socrata API</span><span class="pi-tag">Data Visualization</span>
           </div>
+          <div class="project-deep">
+            <div class="pd-card"><div class="pd-k">Architecture</div><div class="pd-v">React/Vite frontend consuming Chicago Open Data APIs with reusable chart components and dataset-specific transforms.</div></div>
+            <div class="pd-card"><div class="pd-k">Engineering Challenge</div><div class="pd-v">Normalized messy civic datasets into clean visual states for crime, transit, camera, and 311 trends.</div></div>
+          </div>
           <div class="proj-links">
             <a href="https://chi-metrics.vercel.app" target="_blank" class="pi-live-link">Live Demo ↗</a>
             <a href="https://github.com/davina-titus/ChiMetrics" target="_blank" class="pi-gh-link">View on GitHub →</a>
@@ -842,6 +882,10 @@ footer small{font-family:var(--fs);font-size:9px;font-weight:200;letter-spacing:
             <span class="pi-tag">React</span><span class="pi-tag">Vite</span><span class="pi-tag">Claude API</span>
             <span class="pi-tag">Anthropic</span><span class="pi-tag">Data Visualization</span><span class="pi-tag">Vercel</span>
           </div>
+          <div class="project-deep">
+            <div class="pd-card"><div class="pd-k">Architecture</div><div class="pd-v">Claude API workflow generates structured timeline data that feeds comparison cards, charts, and exportable visual outputs.</div></div>
+            <div class="pd-card"><div class="pd-k">Engineering Challenge</div><div class="pd-v">Designed prompts and UI state to keep three generated life paths distinct, comparable, and readable.</div></div>
+          </div>
           <div class="proj-links">
             <a href="https://youtu.be/glDdiWyR_kc?si=kYp1arZh65h2Ur-7" target="_blank" class="pi-live-link">Watch Demo ↗</a>
             <a href="https://github.com/davina-titus/parallel-you" target="_blank" class="pi-gh-link">View on GitHub →</a>
@@ -858,6 +902,10 @@ footer small{font-family:var(--fs);font-size:9px;font-weight:200;letter-spacing:
           <div class="pi-tags">
             <span class="pi-tag">React</span><span class="pi-tag">TypeScript</span><span class="pi-tag">Node.js</span>
             <span class="pi-tag">Express</span><span class="pi-tag">OpenAI GPT-4</span><span class="pi-tag">Tailwind CSS</span>
+          </div>
+          <div class="project-deep">
+            <div class="pd-card"><div class="pd-k">Architecture</div><div class="pd-v">Full-stack React/Node app with product data, AI analysis, and compatibility scoring across ingredient combinations.</div></div>
+            <div class="pd-card"><div class="pd-k">Engineering Challenge</div><div class="pd-v">Built a conflict-detection layer that compares skincare ingredients and turns analysis into a simple 0–100 user-facing score.</div></div>
           </div>
           <div class="proj-links">
             <a href="https://github.com/davina-titus/facecartApp" target="_blank" class="pi-gh-link">View on GitHub →</a>
@@ -918,6 +966,11 @@ footer small{font-family:var(--fs);font-size:9px;font-weight:200;letter-spacing:
         <span class="sk-tag">REST APIs</span><span class="sk-tag">OOP</span><span class="sk-tag">Responsive Design</span>
       </div>
     </div>
+  </div>
+  <div class="stack-strip reveal d4">
+    <div class="stack-title">Strongest Technical Identity</div>
+    <div class="stack-line">AI full-stack engineering · LLM evaluation · civic data visualization · human-centered systems</div>
+    <div class="stack-note">This is the signal recruiters should get first: I build polished applications, but I also care about data flow, API integration, evaluation quality, and how real users interact with systems.</div>
   </div>
 </section>
 
