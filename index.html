@@ -76,20 +76,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 72px;height:68px;d
 .corner.bl{bottom:48px;left:72px;border-bottom:1px solid var(--gold-dim);border-left:1px solid var(--gold-dim)}
 .corner.br{bottom:48px;right:72px;border-bottom:1px solid var(--gold-dim);border-right:1px solid var(--gold-dim)}
 
-.hero-inner{
-  width:100%;
-  padding:48px 72px 72px;
-  display:grid;
-  grid-template-columns:1fr 320px;
-  gap:72px;
-  align-items:start;
-  position:relative;
-  z-index:2;
-}
-
-.hero-copy{
-  padding-top:16px;
-}
+.hero-inner{width:100%;padding:76px 72px 60px;display:grid;grid-template-columns:1fr 300px;gap:80px;align-items:end;position:relative;z-index:2}
 
 .h-brow{display:flex;align-items:center;gap:18px;margin-bottom:28px;opacity:0;animation:fU 1s 1.8s var(--ease) forwards}
 .h-brow-bar{width:32px;height:1px;background:var(--gold)}
@@ -98,14 +85,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 72px;height:68px;d
 /* ─ NAME: single unified Cormorant string, no split ─ */
 .hero-name{
   font-family:var(--fd);
-  font-size:clamp(76px,6vw,118px);
+  font-size:clamp(72px,10vw,148px);
   font-weight:300;
-  line-height:.92;
-  letter-spacing:-0.04em;
+  line-height:.88;
+  letter-spacing:.02em;
   color:var(--ivory);
-  margin:0 0 34px;
+  opacity:0;
+  animation:fU 1.2s 2s var(--ease) forwards;
+  display:block;
+  white-space:nowrap;
 }
-  
 /* The italic 'profession' tagline below the name */
 .hero-subtitle{
   display:block;
@@ -541,7 +530,7 @@ footer small{font-family:var(--fs);font-size:9px;font-weight:200;letter-spacing:
   letter-spacing: .04em;
 }
 
-/* ── ART IMAGE ───────────────────────────── 
+/* ── ART IMAGE ───────────────────────────── */
 .bnd-art-img {
   width: 100%;
   border: 1px solid var(--border);
@@ -553,7 +542,7 @@ footer small{font-family:var(--fs);font-size:9px;font-weight:200;letter-spacing:
 .bnd-card:hover .bnd-art-img {
   filter: grayscale(0%) contrast(1.1);
   border-color: var(--gold-dim);
-} 
+}
 
 /* ── RESUME BUTTON ───────────────────────── */
 .resume-btn {
@@ -646,15 +635,15 @@ footer small{font-family:var(--fs);font-size:9px;font-weight:200;letter-spacing:
 
   <div class="hero-inner">
     <div>
-      <!-- EY Badge 
+      <!-- EY Badge -->
       <div class="ey-badge">
         <span class="ey-logo">EY</span>
         <div class="ey-badge-text">
-          <!--<span class="ey-badge-title">Internship Experience</span>
+          <!--<span class="ey-badge-title">Internship Experience</span>-->
           <span class="ey-badge-sub">Generative AI R&amp;D · Ernst &amp; Young</span>
         </div>
         <div class="ey-pulse"></div>
-      </div> -->
+      </div>
 
       <!-- Unified name — single font, no splits -->
       <span class="hero-name">Davina Titus</span>
@@ -1006,6 +995,10 @@ footer small{font-family:var(--fs);font-size:9px;font-weight:200;letter-spacing:
 <script>
 // Preloader
 window.addEventListener('load', () => setTimeout(() => document.getElementById('pre').classList.add('done'), 2400));
+
+
+
+
 
 // Scroll reveal
 const io = new IntersectionObserver(entries => {
