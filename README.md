@@ -1,4 +1,4 @@
-## Davina Titus - Portfolio 
+## Davina Titus
 
  **Live Site:** [davinatitus.com](https://davinatitus.com/)
 
