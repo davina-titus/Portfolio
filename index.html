@@ -1,19 +1,20 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Davina T</title>
+<title>Davina Titus</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap">
 <style>
 /* Layout: sticky left identity column + right content column; code-editor motifs (file tabs, // comments, terminal card) in a pastel palette. */
 :root{
-  --bg:#f8f7fc; --surface:#ffffff; --fg:#1d1b2e; --muted:#5f5c74; --faint:#9491a8; --line:#e7e4f1;
-  --lav:#d9d0fb; --lav-ink:#5b47c4;
-  --mint:#cdeee0; --mint-ink:#1f7a55;
-  --peach:#ffdcc8; --peach-ink:#b0532a;
-  --sky:#cfe4fb; --sky-ink:#2a63a8;
-  --butter:#fbefbd; --butter-ink:#8a6a0e;
-  --pink:#fbd5e5; --pink-ink:#ad3a6e;
-  --term:#2b2840; --term-fg:#ece9ff;
+  --bg:#fcfbfe; --surface:#ffffff; --fg:#1d1b2e; --muted:#5f5c74; --faint:#9a97ad; --line:#eeebf6;
+  --lav:#ece6fe; --lav-ink:#5b47c4;
+  --mint:#e3f6ee; --mint-ink:#1f7a55;
+  --peach:#ffece2; --peach-ink:#b0532a;
+  --sky:#e4f0fd; --sky-ink:#2a63a8;
+  --butter:#fdf7da; --butter-ink:#866710;
+  --pink:#fde8f1; --pink-ink:#ad3a6e;
+  --term:#f6f3fe; --term-fg:#2b2840; --term-bar:#efeafd;
+  --sx-k:#6a4fd6; --sx-s:#1f8a5c; --sx-n:#a5700a; --sx-p:#2a63a8; --sx-c:#9a96b0;
   --sans:"Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono:"Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
 }
@@ -22,13 +23,13 @@
   --lav:#3a3260; --lav-ink:#c9bcff; --mint:#1f3d33; --mint-ink:#9de3c4;
   --peach:#45302a; --peach-ink:#ffbf9c; --sky:#1f3350; --sky-ink:#a9cdf7;
   --butter:#413a1c; --butter-ink:#f3dc86; --pink:#43263a; --pink-ink:#f7b0d0;
-  --term:#0f0e18; --term-fg:#ece9ff; color-scheme:dark}}
+  --term:#0f0e18; --term-fg:#ece9ff; --term-bar:#16151f; --sx-k:#c9b8ff; --sx-s:#a6e3c4; --sx-n:#f8dc8a; --sx-p:#a9cdf7; --sx-c:#7d789c; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#15141f; --surface:#1d1c2b; --fg:#ecebf6; --muted:#a6a3bd; --faint:#75728d; --line:#2c2a3e;
   --lav:#3a3260; --lav-ink:#c9bcff; --mint:#1f3d33; --mint-ink:#9de3c4;
   --peach:#45302a; --peach-ink:#ffbf9c; --sky:#1f3350; --sky-ink:#a9cdf7;
   --butter:#413a1c; --butter-ink:#f3dc86; --pink:#43263a; --pink-ink:#f7b0d0;
-  --term:#0f0e18; --term-fg:#ece9ff; color-scheme:dark}
+  --term:#0f0e18; --term-fg:#ece9ff; --term-bar:#16151f; --sx-k:#c9b8ff; --sx-s:#a6e3c4; --sx-n:#f8dc8a; --sx-p:#a9cdf7; --sx-c:#7d789c; color-scheme:dark}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -72,13 +73,13 @@ h2 .cm{color:var(--faint);font-weight:400}
 h2::after{content:"";flex:1;height:1px;background:var(--line)}
 
 /* Terminal card */
-.term{background:var(--term);color:var(--term-fg);border-radius:12px;overflow:hidden;box-shadow:0 10px 30px -12px rgba(60,40,140,.35)}
-.term-bar{display:flex;align-items:center;gap:7px;padding:11px 14px;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.06)}
+.term{background:var(--term);color:var(--term-fg);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 10px 30px -16px rgba(60,40,140,.18)}
+.term-bar{display:flex;align-items:center;gap:7px;padding:11px 14px;background:var(--term-bar);border-bottom:1px solid var(--line)}
 .term-bar i{width:11px;height:11px;border-radius:50%;display:inline-block}
 .term-bar i:nth-child(1){background:#f7a8b8}.term-bar i:nth-child(2){background:#f8dc8a}.term-bar i:nth-child(3){background:#a6e3c4}
-.term-bar span{margin-left:10px;font-family:var(--mono);font-size:12px;color:#a9a4c8}
+.term-bar span{margin-left:10px;font-family:var(--mono);font-size:12px;color:var(--faint)}
 .term pre{margin:0;padding:18px 20px;font-family:var(--mono);font-size:13px;line-height:1.75;overflow-x:auto}
-.k{color:#c9b8ff}.s{color:#a6e3c4}.n{color:#f8dc8a}.p{color:#a9cdf7}.c{color:#7d789c}.pk{color:#f7b0d0}
+.k{color:var(--sx-k)}.s{color:var(--sx-s)}.n{color:var(--sx-n)}.p{color:var(--sx-p)}.c{color:var(--sx-c)}.pk{color:#f7b0d0}
 .about-text p{margin:18px 0 0;color:var(--muted);max-width:66ch}
 .about-text strong{color:var(--fg);font-weight:500}
 
@@ -126,6 +127,11 @@ h2::after{content:"";flex:1;height:1px;background:var(--line)}
 .edu{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;grid-template-columns:128px minmax(0,1fr);gap:18px}
 .edu h3{margin:0;font-size:16px;font-weight:600}
 .edu .org{color:var(--muted);font-size:14px}
+.cw{margin-top:18px;padding-top:16px;border-top:1px dashed var(--line);display:flex;flex-direction:column;gap:14px}
+.cw h4{margin:0 0 8px;font-family:var(--mono);font-size:12px;font-weight:500;color:var(--faint)}
+.course{display:inline-flex;align-items:baseline;gap:7px;font-size:13px;background:var(--bg);border:1px solid var(--line);padding:4px 10px;border-radius:8px}
+.course code{font-family:var(--mono);font-size:11px;color:var(--faint)}
+.courses{display:flex;flex-wrap:wrap;gap:6px}
 
 /* Beyond */
 .beyond{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
@@ -159,7 +165,7 @@ footer{border-top:1px solid var(--line);padding-top:22px;color:var(--faint);font
       <p class="hello">&gt; hello, world. i'm</p>
       <h1>Davina Titus<span class="cursor" aria-hidden="true"></span></h1>
       <p class="title">CS student · software engineer</p>
-      <p class="sub">Computer Science (Software Engineering) + Economics. I build full-stack apps and AI tools that people actually enjoy using.</p>
+      <p class="sub">Computer Science (Software Engineering) + Economics at UIC. I build full-stack apps and AI tools, and I'm drawn to where code meets markets.</p>
     </div>
     <span class="status"><i></i>Chicago, IL · Class of 2028</span>
     <ul class="toc">
@@ -189,6 +195,7 @@ footer{border-top:1px solid var(--line);padding-top:22px;color:var(--faint);font
   gradYear:  <span class="n">2028</span>,
   deansList: <span class="k">true</span>,
   focus:     [<span class="s">"full-stack"</span>, <span class="s">"applied AI"</span>],
+  exploring: [<span class="s">"quant dev"</span>, <span class="s">"quant trading"</span>],
   clubs:     [<span class="s">"WiCS"</span>, <span class="s">"ACM"</span>, <span class="s">"SparkHacks"</span>],
   <span class="c">// currently: TA-ing calculus for 100+ students</span>
 };</pre>
@@ -295,7 +302,7 @@ footer{border-top:1px solid var(--line);padding-top:22px;color:var(--faint);font
         <div class="sk"><h4>languages</h4><div class="tags"><span class="t-butter">Python</span><span class="t-butter">JavaScript</span><span class="t-butter">TypeScript</span><span class="t-butter">C++</span><span class="t-butter">C</span><span class="t-butter">SQL</span><span class="t-butter">HTML/CSS</span></div></div>
         <div class="sk"><h4>frameworks</h4><div class="tags"><span class="t-sky">React</span><span class="t-sky">Node.js</span><span class="t-sky">Express</span><span class="t-sky">Vite</span><span class="t-sky">Tailwind</span><span class="t-sky">Recharts</span></div></div>
         <div class="sk"><h4>ai / ml</h4><div class="tags"><span class="t-lav">LLM integration</span><span class="t-lav">Prompt engineering</span><span class="t-lav">Model benchmarking</span><span class="t-lav">GPT-4</span><span class="t-lav">Claude</span><span class="t-lav">Gemini</span><span class="t-lav">Llama</span><span class="t-lav">Azure AI</span></div></div>
-        <div class="sk"><h4>tools &amp; concepts</h4><div class="tags"><span class="t-mint">Git</span><span class="t-mint">REST APIs</span><span class="t-mint">Data structures</span><span class="t-mint">OOP</span><span class="t-mint">Software design</span><span class="t-mint">Data analysis</span></div></div>
+        <div class="sk"><h4>tools &amp; concepts</h4><div class="tags"><span class="t-mint">Git</span><span class="t-mint">REST APIs</span><span class="t-mint">Data structures</span><span class="t-mint">OOP</span><span class="t-mint">Software design</span><span class="t-mint">Data analysis</span><span class="t-mint">Mathematics</span></div></div>
       </div>
     </section>
 
@@ -307,6 +314,26 @@ footer{border-top:1px solid var(--line);padding-top:22px;color:var(--faint);font
           <h3>University of Illinois Chicago</h3>
           <div class="org">B.S. Computer Science (Software Engineering) · Minor in Economics</div>
           <div class="tags"><span class="t-mint">Dean's List</span><span class="t-pink">WiCS</span><span class="t-sky">ACM</span><span class="t-peach">SparkHacks</span></div>
+          <div class="cw">
+            <div>
+              <h4>// relevant coursework: math</h4>
+              <div class="courses">
+                <span class="course"><code>MATH 180–210</code>Calculus I, II &amp; III</span>
+                <span class="course"><code>MATH 310</code>Linear Algebra</span>
+                <span class="course"><code>MATH 220</code>Differential Equations</span>
+              </div>
+            </div>
+            <div>
+              <h4>// relevant coursework: cs</h4>
+              <div class="courses">
+                <span class="course"><code>CS 251</code>Data Structures</span>
+                <span class="course"><code>CS 301</code>Languages &amp; Automata</span>
+                <span class="course"><code>CS 151</code>Mathematical Foundations of Computing</span>
+                <span class="course"><code>CS 211</code>Programming Practicum</span>
+                <span class="course"><code>CS 141</code>Program Design II</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -318,8 +345,8 @@ footer{border-top:1px solid var(--line);padding-top:22px;color:var(--faint);font
         <div class="t-peach"><span class="ico" aria-hidden="true">🖨️</span><h4>Art for a Cause</h4><p>During COVID I started selling my art as prints and gave part of each sale to ACCESS.</p></div>
         <div class="t-lav"><span class="ico" aria-hidden="true">🎹</span><h4>Piano</h4><p>I've been playing since I was 8. Taking song requests, within reason.</p></div>
         <div class="t-mint"><span class="ico" aria-hidden="true">🏸</span><h4>Track &amp; Badminton</h4><p>I'll happily take you on in a rally, then race you to the snacks.</p></div>
-        <div class="t-sky"><span class="ico" aria-hidden="true">✈️</span><h4>Travel</h4><p>From Amsterdam to Dubai and a lot of places in between. Always planning the next trip.</p></div>
-        <div class="t-butter"><span class="ico" aria-hidden="true">👑</span><h4>Clash Royale</h4><p>Yes, I'm the one spamming the laughing emote. Strategy games are my favorite break.</p></div>
+        <div class="t-sky"><span class="ico" aria-hidden="true">✈️</span><h4>Travel</h4><p>Collector of passport stamps and window seats.</p></div>
+        <div class="t-butter"><span class="ico" aria-hidden="true">👑</span><h4>Clash Royale</h4><p>Max trophies, and yes, I'm the one spamming the laughing emote.</p></div>
       </div>
     </section>
 
