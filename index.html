@@ -129,8 +129,11 @@ h2::after{content:"";flex:1;height:1px;background:var(--line)}
 
 /* Beyond */
 .beyond{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.beyond div{min-width:0;padding:14px 16px;border-radius:12px}
-.beyond h4{margin:0 0 4px;font-size:14px;font-weight:600}
+.beyond div{min-width:0;padding:16px 18px;border-radius:14px;transition:transform .2s cubic-bezier(.3,1.6,.5,1)}
+.beyond div:nth-child(odd):hover{transform:rotate(-1.5deg) translateY(-3px)}
+.beyond div:nth-child(even):hover{transform:rotate(1.5deg) translateY(-3px)}
+.beyond .ico{font-size:22px;line-height:1;display:block;margin-bottom:8px}
+.beyond h4{margin:0 0 4px;font-size:15px;font-weight:600}
 .beyond p{margin:0;font-size:14px;color:var(--muted)}
 
 footer{border-top:1px solid var(--line);padding-top:22px;color:var(--faint);font-family:var(--mono);font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
@@ -185,7 +188,7 @@ footer{border-top:1px solid var(--line);padding-top:22px;color:var(--faint);font
   minor:     <span class="s">"Economics"</span>,
   gradYear:  <span class="n">2028</span>,
   deansList: <span class="k">true</span>,
-  focus:     [<span class="s">"full-stack"</span>, <span class="s">"applied AI"</span>, <span class="s">"HCI"</span>],
+  focus:     [<span class="s">"full-stack"</span>, <span class="s">"applied AI"</span>],
   clubs:     [<span class="s">"WiCS"</span>, <span class="s">"ACM"</span>, <span class="s">"SparkHacks"</span>],
   <span class="c">// currently: TA-ing calculus for 100+ students</span>
 };</pre>
@@ -289,12 +292,11 @@ footer{border-top:1px solid var(--line);padding-top:22px;color:var(--faint);font
     <section id="skills">
       <h2><span class="cm">//</span> skills</h2>
       <div class="skills">
-        <div class="sk"><h4>languages</h4><div class="tags"><span class="t-butter">Python ✓</span><span class="t-butter">JavaScript</span><span class="t-butter">TypeScript</span><span class="t-butter">C++</span><span class="t-butter">C</span><span class="t-butter">SQL</span><span class="t-butter">HTML/CSS</span></div></div>
+        <div class="sk"><h4>languages</h4><div class="tags"><span class="t-butter">Python</span><span class="t-butter">JavaScript</span><span class="t-butter">TypeScript</span><span class="t-butter">C++</span><span class="t-butter">C</span><span class="t-butter">SQL</span><span class="t-butter">HTML/CSS</span></div></div>
         <div class="sk"><h4>frameworks</h4><div class="tags"><span class="t-sky">React</span><span class="t-sky">Node.js</span><span class="t-sky">Express</span><span class="t-sky">Vite</span><span class="t-sky">Tailwind</span><span class="t-sky">Recharts</span></div></div>
         <div class="sk"><h4>ai / ml</h4><div class="tags"><span class="t-lav">LLM integration</span><span class="t-lav">Prompt engineering</span><span class="t-lav">Model benchmarking</span><span class="t-lav">GPT-4</span><span class="t-lav">Claude</span><span class="t-lav">Gemini</span><span class="t-lav">Llama</span><span class="t-lav">Azure AI</span></div></div>
         <div class="sk"><h4>tools &amp; concepts</h4><div class="tags"><span class="t-mint">Git</span><span class="t-mint">REST APIs</span><span class="t-mint">Data structures</span><span class="t-mint">OOP</span><span class="t-mint">Software design</span><span class="t-mint">Data analysis</span></div></div>
       </div>
-      <p class="note">✓ verified by LinkedIn Skill Assessment</p>
     </section>
 
     <section id="education">
@@ -312,16 +314,18 @@ footer{border-top:1px solid var(--line);padding-top:22px;color:var(--faint);font
     <section id="beyond">
       <h2><span class="cm">//</span> outside of code</h2>
       <div class="beyond">
-        <div class="t-peach"><h4>Art for a Cause</h4><p>Started an art print business during COVID and donated part of every sale to ACCESS.</p></div>
-        <div class="t-lav"><h4>Keyboard</h4><p>Playing since age 8; Trinity College London Grade 3 certified.</p></div>
-        <div class="t-mint"><h4>Track &amp; Badminton</h4><p>Years of competing taught me composure under pressure and teamwork.</p></div>
-        <div class="t-sky"><h4>Travel</h4><p>France, the Netherlands, Singapore, Australia, New Zealand, Bali, Thailand and more.</p></div>
+        <div class="t-pink"><span class="ico" aria-hidden="true">🎨</span><h4>Painting</h4><p>Give me a canvas and a messy palette and I'll lose track of time. My favorite way to switch off.</p></div>
+        <div class="t-peach"><span class="ico" aria-hidden="true">🖨️</span><h4>Art for a Cause</h4><p>During COVID I started selling my art as prints and gave part of each sale to ACCESS.</p></div>
+        <div class="t-lav"><span class="ico" aria-hidden="true">🎹</span><h4>Piano</h4><p>I've been playing since I was 8. Taking song requests, within reason.</p></div>
+        <div class="t-mint"><span class="ico" aria-hidden="true">🏸</span><h4>Track &amp; Badminton</h4><p>I'll happily take you on in a rally, then race you to the snacks.</p></div>
+        <div class="t-sky"><span class="ico" aria-hidden="true">✈️</span><h4>Travel</h4><p>From Paris to Bali and a lot of places in between. Always planning the next trip.</p></div>
+        <div class="t-butter"><span class="ico" aria-hidden="true">👑</span><h4>Clash Royale</h4><p>Yes, I'm the one spamming the laughing emote. Strategy games are my favorite break.</p></div>
       </div>
     </section>
 
     <footer>
       <span>© 2026 Davina Titus</span>
-      <span>built with HTML, CSS &amp; ☕</span>
+      <span>built with caffeine ☕</span>
     </footer>
   </main>
 </div>
