@@ -103,7 +103,7 @@ h2::after{content:"";flex:1;height:1px;background:var(--line)}
 .t-butter{background:var(--butter);color:var(--butter-ink)}.t-pink{background:var(--pink);color:var(--pink-ink)}
 
 /* Projects as editor files */
-.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 .proj{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;min-width:0;transition:transform .15s,box-shadow .15s}
 .proj:hover{transform:translateY(-3px);box-shadow:0 12px 24px -14px rgba(60,40,140,.3)}
 .tab{display:flex;align-items:center;gap:8px;padding:9px 16px;font-family:var(--mono);font-size:12px;font-weight:500}
@@ -115,6 +115,9 @@ h2::after{content:"";flex:1;height:1px;background:var(--line)}
 .proj .metric{font-family:var(--mono);font-size:12px;color:var(--fg)}
 .proj .metric::before{content:"→ ";color:var(--lav-ink)}
 .proj .tags{margin-top:auto;padding-top:4px}
+.plinks{display:flex;gap:14px;flex-wrap:wrap;padding-top:12px;margin-top:2px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:12.5px}
+.plinks a{font-weight:500}
+.proj.feature{grid-column:1 / -1}
 
 /* Skills */
 .skills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
@@ -164,8 +167,8 @@ footer{border-top:1px solid var(--line);padding-top:22px;color:var(--faint);font
     <div>
       <p class="hello">&gt; hello, world. i'm</p>
       <h1>Davina Titus<span class="cursor" aria-hidden="true"></span></h1>
-      <p class="title">CS student · software engineer</p>
-      <p class="sub">Computer Science (Software Engineering) + Economics at UIC. I build full-stack apps and AI tools, and I'm drawn to where code meets markets.</p>
+      <p class="title">software engineer · quant-curious</p>
+      <p class="sub">Computer Science (Software Engineering) + Economics. I build full-stack apps and AI tools, and I'm drawn to where code meets markets.</p>
     </div>
     <span class="status"><i></i>Chicago, IL · Class of 2028</span>
     <ul class="toc">
@@ -263,6 +266,28 @@ footer{border-top:1px solid var(--line);padding-top:22px;color:var(--faint);font
     <section id="projects">
       <h2><span class="cm">//</span> projects</h2>
       <div class="projects">
+        <article class="proj feature">
+          <div class="tab t-peach">order_book.cpp</div>
+          <div class="body">
+            <div class="meta">markets · C++17</div>
+            <h3>Limit Order Book</h3>
+            <p>Exchange-style matching engine with price-time priority, limit, market and IOC orders, O(1) cancels, and integer tick prices. Ships with a replay tool, 17 unit tests and CI.</p>
+            <div class="metric">~3.3M ops/sec · ~170 ns median latency</div>
+            <div class="tags"><span class="t-peach">C++17</span><span class="t-lav">Data structures</span><span class="t-mint">CMake</span><span class="t-sky">GitHub Actions</span></div>
+            <div class="plinks"><a href="https://github.com/davina-titus/orderbook" target="_blank" rel="noopener">code ↗</a><a href="https://courageous-frangollo-012c00.netlify.app" target="_blank" rel="noopener">live demo ↗</a></div>
+          </div>
+        </article>
+        <article class="proj">
+          <div class="tab t-mint">market_maker.py</div>
+          <div class="body">
+            <div class="meta">markets · stochastic control</div>
+            <h3>Avellaneda-Stoikov Market Maker</h3>
+            <p>Implementation of the Avellaneda-Stoikov (2008) model: inventory-aware quotes from the closed-form HJB solution, benchmarked against naive fixed-spread quoting with Monte Carlo runs and an interactive dashboard.</p>
+            <div class="metric">beats naive quoting on Sharpe and drawdown</div>
+            <div class="tags"><span class="t-butter">Python</span><span class="t-lav">NumPy</span><span class="t-sky">Dash</span><span class="t-mint">Monte Carlo</span></div>
+            <div class="plinks"><a href="https://github.com/davina-titus/avellaneda-stoikov" target="_blank" rel="noopener">code ↗</a><a href="https://stellar-faun-e1c90a.netlify.app" target="_blank" rel="noopener">live demo ↗</a></div>
+          </div>
+        </article>
         <article class="proj">
           <div class="tab t-sky">chimetrics.jsx</div>
           <div class="body">
@@ -271,6 +296,7 @@ footer{border-top:1px solid var(--line);padding-top:22px;color:var(--faint);font
             <p>Live dashboard of Chicago public data: crime trends, CTA ridership, red-light and speed camera violations, and 311 requests. Rebuilt from an earlier C++ traffic-violation analyzer.</p>
             <div class="metric">real-time data via Socrata Open Data API</div>
             <div class="tags"><span class="t-sky">React</span><span class="t-lav">Vite</span><span class="t-mint">Recharts</span><span class="t-butter">JavaScript</span></div>
+            <div class="plinks"><a href="https://github.com/davina-titus/ChiMetrics" target="_blank" rel="noopener">code ↗</a><a href="https://chi-metrics.vercel.app" target="_blank" rel="noopener">live demo ↗</a></div>
           </div>
         </article>
         <article class="proj">
@@ -281,6 +307,7 @@ footer{border-top:1px solid var(--line);padding-top:22px;color:var(--faint);font
             <p>Full-stack AI skincare storefront built by a team of four in 24 hours, with a conflict-detection engine that scores product compatibility from 0 to 100.</p>
             <div class="metric">40+ products · 200+ ingredient combinations</div>
             <div class="tags"><span class="t-sky">TypeScript</span><span class="t-mint">Node.js</span><span class="t-peach">Express</span><span class="t-lav">GPT-4</span></div>
+            <div class="plinks"><a href="https://github.com/davina-titus/facecartApp" target="_blank" rel="noopener">code ↗</a></div>
           </div>
         </article>
         <article class="proj">
@@ -288,9 +315,10 @@ footer{border-top:1px solid var(--line);padding-top:22px;color:var(--faint);font
           <div class="body">
             <div class="meta">personal project</div>
             <h3>ParallelYou</h3>
-            <p>A life simulator powered by the Claude API that explores how different choices might play out.</p>
-            <div class="metric">generative AI · LLM integration</div>
-            <div class="tags"><span class="t-lav">Claude API</span><span class="t-butter">JavaScript</span></div>
+            <p>An AI multiverse simulator: enter your background, goals and risk tolerance, and Claude generates three distinct career timelines with salary projections over 20 years. Compare two people head to head and export results as an image.</p>
+            <div class="metric">3 parallel timelines · 20-year salary charts</div>
+            <div class="tags"><span class="t-lav">Claude API</span><span class="t-sky">React</span><span class="t-butter">JavaScript</span></div>
+            <div class="plinks"><a href="https://github.com/davina-titus/parallel-you" target="_blank" rel="noopener">code ↗</a><a href="https://youtu.be/glDdiWyR_kc" target="_blank" rel="noopener">demo video ↗</a></div>
           </div>
         </article>
       </div>
