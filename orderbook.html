@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Building a Limit Order Book</title>
+<meta name="description" content="How I built an exchange-style limit order book and matching engine in C++17: data structures, matching rules, testing and benchmarks.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building a Limit Order Book in C++">
+<meta property="og:description" content="Data structures, matching rules, testing and benchmarks behind my C++17 matching engine.">
+<meta property="og:url" content="https://davinatitus.com/orderbook.html">
+<meta property="og:image" content="https://davinatitus.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="article.css">
+</head>
+<body>
+<div class="page">
+  <header class="mast">
+    <a class="me" href="index.html">Davina Titus</a>
+    <nav aria-label="Site"><a href="index.html#work">Work</a><a href="market-maker.html">Market maker</a><a href="index.html#contact">Contact</a></nav>
+  </header>
+
+  <header class="head">
+    <span class="label">Write-up · C++17 · Markets</span>
+    <h1>Building a limit order <em>book</em></h1>
+    <p class="dek">What actually happens when you press "buy," and how I built the part of an exchange that decides.</p>
+    <div class="meta"><a href="https://github.com/davina-titus/orderbook" target="_blank" rel="noopener">Code ↗</a><a href="https://courageous-frangollo-012c00.netlify.app" target="_blank" rel="noopener">Live demo ↗</a><span>~3.3M orders/sec</span><span>17 tests</span></div>
+  </header>
+
+  <article>
+    <h2><span class="n">01</span>The question</h2>
+    <p>Every order on an exchange lands in a <strong>limit order book</strong>: a list of everyone willing to buy (bids) and sell (asks), sorted by price. When a new order comes in, a matching engine decides who trades with whom, at what price, and in what order. It has to do that correctly every time, and fast.</p>
+    <p>I wanted to understand that engine well enough to build one, so I wrote a single-instrument order book in C++17 with the order types real exchanges use: limit, market and immediate-or-cancel (IOC), plus cancels and quantity reductions.</p>
+
+    <h2><span class="n">02</span>The rules</h2>
+    <p>Matching follows <strong>price-time priority</strong>, the standard on most exchanges:</p>
+    <ul>
+      <li><strong>Price first.</strong> A buy order matches the cheapest ask; a sell order matches the highest bid.</li>
+      <li><strong>Then time.</strong> At the same price, whoever arrived first fills first.</li>
+      <li><strong>Trades print at the resting order's price.</strong> If I'm willing to pay $101 and someone is already asking $100, I pay $100. The aggressive order gets the price improvement.</li>
+    </ul>
+    <p>The order types differ only in what happens to quantity that doesn't fill: a <strong>limit</strong> order rests on the book, a <strong>market</strong> order trades at any price and drops the rest, and an <strong>IOC</strong> order trades up to its limit and cancels the rest.</p>
+
+    <h2><span class="n">03</span>Choosing the data structures</h2>
+    <p>This was the part I spent the most time on, because each operation has different needs.</p>
+    <figure>
+      <div class="plate">
+        <svg viewBox="0 0 640 230" role="img" aria-label="Bids and asks stored as sorted maps of price levels, each level a FIFO queue of orders, with a hash map from order id to its position for O(1) cancels">
+          <text x="20" y="22" font-family="IBM Plex Mono, monospace" font-size="12" fill="#3f6a46">bids · std::map (highest first)</text>
+          <text x="340" y="22" font-family="IBM Plex Mono, monospace" font-size="12" fill="#8a3b24">asks · std::map (lowest first)</text>
+          <g font-family="IBM Plex Mono, monospace" font-size="13" fill="#15130f">
+            <rect x="20" y="36" width="80" height="30" fill="#f6f1e7" stroke="#d9d1c1"></rect><text x="32" y="56">100.00</text>
+            <rect x="20" y="74" width="80" height="30" fill="#f6f1e7" stroke="#d9d1c1"></rect><text x="38" y="94">99.75</text>
+            <rect x="120" y="36" width="56" height="30" rx="3" fill="rgba(63,106,70,.16)"></rect><text x="132" y="56">#5</text>
+            <rect x="184" y="36" width="56" height="30" rx="3" fill="rgba(63,106,70,.16)"></rect><text x="196" y="56">#9</text>
+            <rect x="120" y="74" width="56" height="30" rx="3" fill="rgba(63,106,70,.16)"></rect><text x="132" y="94">#4</text>
+            <rect x="340" y="36" width="80" height="30" fill="#f6f1e7" stroke="#d9d1c1"></rect><text x="352" y="56">100.50</text>
+            <rect x="340" y="74" width="80" height="30" fill="#f6f1e7" stroke="#d9d1c1"></rect><text x="352" y="94">101.00</text>
+            <rect x="440" y="36" width="56" height="30" rx="3" fill="rgba(138,59,36,.14)"></rect><text x="452" y="56">#2</text>
+            <rect x="504" y="36" width="56" height="30" rx="3" fill="rgba(138,59,36,.14)"></rect><text x="516" y="56">#3</text>
+            <rect x="440" y="74" width="56" height="30" rx="3" fill="rgba(138,59,36,.14)"></rect><text x="452" y="94">#1</text>
+          </g>
+          <g stroke="#8a8376" stroke-width="1.2" fill="none">
+            <path d="M100 51 H118"></path><path d="M176 51 H182"></path><path d="M100 89 H118"></path>
+            <path d="M420 51 H438"></path><path d="M496 51 H502"></path><path d="M420 89 H438"></path>
+          </g>
+          <text x="120" y="126" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#8a8376">FIFO std::list per price level →</text>
+          <rect x="20" y="160" width="600" height="40" fill="#fbf8f2" stroke="#15130f"></rect>
+          <text x="36" y="185" font-family="IBM Plex Mono, monospace" font-size="13" fill="#15130f">unordered_map&lt;OrderId, iterator&gt;  →  jump straight to any order</text>
+          <path d="M150 158 V108 M210 158 V68 M470 158 V108 M530 158 V68" stroke="#8a3b24" stroke-width="1" stroke-dasharray="3 3"></path>
+        </svg>
+      </div>
+      <figcaption>Two sorted maps of price levels, a queue per level, and an index from order id to its exact position.</figcaption>
+    </figure>
+    <ul>
+      <li><strong>Sorted map of price levels.</strong> <code>std::map</code> keeps prices ordered, so the best price is always <code>begin()</code>. Bids use <code>std::greater</code> so both sides read best-first. Adding a new level is O(log L), where L is the number of levels on that side.</li>
+      <li><strong>A FIFO list at each level.</strong> <code>std::list</code> gives time priority for free: new orders go on the back, fills come off the front. Unlike a vector, removing an order from the middle doesn't invalidate pointers to the others.</li>
+      <li><strong>An id → iterator index.</strong> Cancels are the most common message on real exchanges, so I didn't want them to scan the book. A hash map from order id to the order's list iterator makes a cancel O(1).</li>
+      <li><strong>Integer prices.</strong> Prices are stored as ticks (cents), not floating point. In floating point, <code>100.10 + 0.20</code> isn't exactly <code>100.30</code>, and a matching engine comparing prices can't afford that.</li>
+    </ul>
+
+    <h2><span class="n">04</span>The matching loop</h2>
+    <p>Every order type runs through one loop. It keeps taking the best opposite level while prices cross, and fills orders at that level front to back:</p>
+<pre><code><span class="k">while</span> (incoming.qty &gt; <span class="t">0</span> &amp;&amp; !book.empty()) {
+    <span class="k">auto</span> level = book.begin();               <span class="c">// best opposite price</span>
+    <span class="k">if</span> (limit &amp;&amp; !crosses(level-&gt;first, *limit)) <span class="k">break</span>;
+
+    <span class="k">while</span> (incoming.qty &gt; <span class="t">0</span> &amp;&amp; !level-&gt;second.orders.empty()) {
+        Order&amp; resting = level-&gt;second.orders.front();
+        Qty fill = std::min(incoming.qty, resting.qty);
+        trades.push_back({..., level-&gt;first, fill});   <span class="c">// resting price</span>
+        incoming.qty -= fill;  resting.qty -= fill;
+        <span class="k">if</span> (resting.qty == <span class="t">0</span>) { index_.erase(resting.id); level-&gt;second.orders.pop_front(); }
+    }
+    <span class="k">if</span> (level-&gt;second.orders.empty()) book.erase(level);
+}</code></pre>
+    <p>Market orders pass no limit, so they cross at any price. Limit orders rest whatever is left afterward; market and IOC orders simply drop it.</p>
+
+    <h2><span class="n">05</span>Testing it</h2>
+    <p>A matching engine that's fast but occasionally wrong is useless, so I wrote 17 unit tests before trusting any benchmark. They cover full and partial fills, price priority, FIFO order within a level, orders that sweep several levels, market and IOC behavior, cancels at the front and middle of a queue, reductions keeping queue position, and bad input like duplicate ids or zero quantities.</p>
+    <p>The suite also runs under <strong>AddressSanitizer</strong> and <strong>UndefinedBehaviorSanitizer</strong>, which catch memory bugs like using an iterator after its order was erased. GitHub Actions builds and tests everything on every push.</p>
+
+    <h2><span class="n">06</span>How fast it is</h2>
+    <p>The benchmark replays 1,000,000 synthetic orders with a fixed seed: about 60% limit orders around a drifting price, 30% cancels and 10% market or IOC orders. Only the order book calls are timed.</p>
+    <div class="tw"><table>
+      <thead><tr><th>Metric</th><th class="num">Result</th></tr></thead>
+      <tbody>
+        <tr><td>Throughput</td><td class="num">~3.3M orders/sec</td></tr>
+        <tr><td>Median latency</td><td class="num">~170 ns</td></tr>
+        <tr><td>99th percentile</td><td class="num">~0.9 µs</td></tr>
+        <tr><td>99.9th percentile</td><td class="num">~4.5 µs</td></tr>
+        <tr><td>Trades generated</td><td class="num">~450,000</td></tr>
+      </tbody>
+    </table></div>
+    <p>Measured on a shared cloud Linux machine, so exact numbers vary. The tail is the interesting part: the median is fast, but the slowest 0.1% of orders take over 25 times longer. Most of that comes from memory allocation, since every new order and every new price level allocates a node on the heap, plus noise from the shared machine.</p>
+
+    <h2><span class="n">07</span>What I'd do next</h2>
+    <p class="callout">Getting it correct was the first half. Making the slow cases fast is the second.</p>
+    <ul>
+      <li><strong>An object pool</strong> for orders, so placing one never calls the allocator. This should cut the tail latency the most.</li>
+      <li><strong>A flat array of price levels</strong> indexed by tick around the current price, turning level lookup from O(log L) into O(1).</li>
+      <li><strong>Multiple instruments</strong> behind a symbol router, closer to how a real exchange gateway works.</li>
+    </ul>
+
+    <div class="next"><a href="index.html#work">← All projects</a><a href="market-maker.html">Next: the market-making model →</a></div>
+  </article>
+
+  <footer>© 2026 Davina Titus · Chicago</footer>
+</div>
+</body>
+</html>
