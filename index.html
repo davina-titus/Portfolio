@@ -1,4 +1,9 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Davina Titus: software engineer and CS student at UIC, exploring quant dev and quant trading.">
 <title>Davina Titus</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -159,8 +164,17 @@ footer{border-top:1px solid var(--line);padding-top:22px;color:var(--faint);font
   .projects,.skills,.beyond{grid-template-columns:1fr}
   .term pre{font-size:12px;padding:14px}
 }
+/* intro: typed greeting + name, then the rest settles in (JS adds .intro only when motion is allowed) */
+.reveal{transition:opacity .55s ease, transform .55s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0ms)}
+html.intro .reveal{opacity:0;transform:translateY(10px)}
+html.intro h1 .cursor{animation:none}
+.skip{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));font-family:var(--mono);font-size:11.5px;color:var(--faint);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:5px 10px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s}
+html.intro .skip{opacity:1;pointer-events:auto}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 </style>
+</head>
+<body>
+
 
 <div class="layout">
   <aside>
@@ -393,5 +407,47 @@ document.getElementById('copyBtn').addEventListener('click', function(){
   try{navigator.clipboard.writeText(txt).then(done,fallback)}catch(e){fallback()}
 });
 </script>
+<button class="skip" id="skipIntro" type="button">skip intro ↵</button>
+<script>
+(function(){
+  var root = document.documentElement;
+  var reduce = false;
+  try { reduce = matchMedia('(prefers-reduced-motion: reduce)').matches; } catch(e) {}
+  var hello = document.querySelector('.hello'), h1 = document.querySelector('aside h1');
+  if (reduce || !hello || !h1 || !h1.firstChild || h1.firstChild.nodeType !== 3) return;
 
-</body></html>
+  // everything after the name settles in, in reading order
+  var order = ['aside .title','aside .sub','aside .status','aside .toc','aside .socials','aside .email','#about','#experience','#projects','#skills','#education','#beyond','main footer'];
+  var els = [];
+  order.forEach(function(sel){ var el = document.querySelector(sel); if (el){ el.classList.add('reveal'); els.push(el); } });
+  els.forEach(function(el, i){ el.style.setProperty('--d', (i < 6 ? i * 70 : 420 + (i - 6) * 60) + 'ms'); });
+
+  var helloText = hello.textContent, nameNode = h1.firstChild, nameText = nameNode.nodeValue;
+  var timers = [], finished = false;
+  root.classList.add('intro');
+  hello.textContent = ''; nameNode.nodeValue = '';
+
+  function finish(){
+    if (finished) return; finished = true;
+    timers.forEach(clearTimeout);
+    hello.textContent = helloText; nameNode.nodeValue = nameText;
+    root.classList.remove('intro');
+    setTimeout(function(){ els.forEach(function(el){ el.style.removeProperty('--d'); }); }, 1400);
+    window.removeEventListener('keydown', onKey);
+  }
+  function onKey(e){ if (e.key === 'Enter' || e.key === 'Escape' || e.key === ' ') finish(); }
+
+  var t = 250;
+  helloText.split('').forEach(function(_, i){ t += 28; timers.push(setTimeout(function(){ hello.textContent = helloText.slice(0, i + 1); }, t)); });
+  t += 220;
+  nameText.split('').forEach(function(_, i){ t += 65 + (nameText[i] === ' ' ? 60 : 0); timers.push(setTimeout(function(){ nameNode.nodeValue = nameText.slice(0, i + 1); }, t)); });
+  timers.push(setTimeout(finish, t + 260));
+  setTimeout(finish, 4000); // safety net: never leave the page hidden
+
+  document.getElementById('skipIntro').addEventListener('click', finish);
+  window.addEventListener('keydown', onKey);
+})();
+</script>
+
+</body>
+</html>
