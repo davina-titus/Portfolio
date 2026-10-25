@@ -1,453 +1,392 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Davina Titus: software engineer and CS student at UIC, exploring quant dev and quant trading.">
-<title>Davina Titus</title>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Davina Titus Editorial</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: sticky left identity column + right content column; code-editor motifs (file tabs, // comments, terminal card) in a pastel palette. */
+/* Layout: personal editorial portfolio. Work first: a grid of project "plates" (live-drawn previews of each project) under oversized serif titles; then a first-person about, a compact timeline, and a big contact sign-off. Light ivory only, by choice. */
 :root{
-  --bg:#fcfbfe; --surface:#ffffff; --fg:#1d1b2e; --muted:#5f5c74; --faint:#9a97ad; --line:#eeebf6;
-  --lav:#ece6fe; --lav-ink:#5b47c4;
-  --mint:#e3f6ee; --mint-ink:#1f7a55;
-  --peach:#ffece2; --peach-ink:#b0532a;
-  --sky:#e4f0fd; --sky-ink:#2a63a8;
-  --butter:#fdf7da; --butter-ink:#866710;
-  --pink:#fde8f1; --pink-ink:#ad3a6e;
-  --term:#f6f3fe; --term-fg:#2b2840; --term-bar:#efeafd;
-  --sx-k:#6a4fd6; --sx-s:#1f8a5c; --sx-n:#a5700a; --sx-p:#2a63a8; --sx-c:#9a96b0;
-  --sans:"Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono:"Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --paper:#f6f1e7; --plate:#efe8da; --plate-2:#e7dfcd; --ink:#15130f; --ink-2:#4a453c; --ink-3:#8a8376; --rule:#d9d1c1;
+  --mark:#8a3b24; --mark-soft:rgba(138,59,36,.14); --green:#3f6a46; --green-soft:rgba(63,106,70,.16);
+  --serif:"Instrument Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --sans:"Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme:light;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#15141f; --surface:#1d1c2b; --fg:#ecebf6; --muted:#a6a3bd; --faint:#75728d; --line:#2c2a3e;
-  --lav:#3a3260; --lav-ink:#c9bcff; --mint:#1f3d33; --mint-ink:#9de3c4;
-  --peach:#45302a; --peach-ink:#ffbf9c; --sky:#1f3350; --sky-ink:#a9cdf7;
-  --butter:#413a1c; --butter-ink:#f3dc86; --pink:#43263a; --pink-ink:#f7b0d0;
-  --term:#0f0e18; --term-fg:#ece9ff; --term-bar:#16151f; --sx-k:#c9b8ff; --sx-s:#a6e3c4; --sx-n:#f8dc8a; --sx-p:#a9cdf7; --sx-c:#7d789c; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#15141f; --surface:#1d1c2b; --fg:#ecebf6; --muted:#a6a3bd; --faint:#75728d; --line:#2c2a3e;
-  --lav:#3a3260; --lav-ink:#c9bcff; --mint:#1f3d33; --mint-ink:#9de3c4;
-  --peach:#45302a; --peach-ink:#ffbf9c; --sky:#1f3350; --sky-ink:#a9cdf7;
-  --butter:#413a1c; --butter-ink:#f3dc86; --pink:#43263a; --pink-ink:#f7b0d0;
-  --term:#0f0e18; --term-fg:#ece9ff; --term-bar:#16151f; --sx-k:#c9b8ff; --sx-s:#a6e3c4; --sx-n:#f8dc8a; --sx-p:#a9cdf7; --sx-c:#7d789c; color-scheme:dark}
-
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:15px;line-height:1.6;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
-  -webkit-font-smoothing:antialiased;
-  background-image:radial-gradient(var(--line) 1px, transparent 1px);background-size:22px 22px}
-a{color:var(--lav-ink);text-decoration:none}
-a:hover{text-decoration:underline;text-underline-offset:3px}
-a:focus-visible,button:focus-visible{outline:2px solid var(--lav-ink);outline-offset:2px;border-radius:6px}
-.mono{font-family:var(--mono)}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;
+  padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:var(--ink-3)}
+a:hover{text-decoration-color:var(--mark);color:var(--mark)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.page{max-width:1080px;margin:0 auto}
+.label{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
 
-.layout{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:310px minmax(0,1fr);gap:64px;padding-block:64px}
+/* masthead */
+.mast{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;padding-block:22px}
+.mast .me{font-family:var(--serif);font-size:24px;text-decoration:none}
+.mast nav{display:flex;gap:22px;flex-wrap:wrap;font-size:14.5px}
+.mast nav a{text-decoration:none;color:var(--ink-2)}
+.mast nav a:hover{color:var(--mark)}
 
-/* Sidebar */
-aside{position:sticky;top:calc(64px + env(safe-area-inset-top,0px));align-self:start;display:flex;flex-direction:column;gap:20px}
-.hello{font-family:var(--mono);font-size:13px;color:var(--mint-ink);margin:0 0 8px}
-h1{font-size:36px;line-height:1.08;font-weight:700;letter-spacing:-.025em;margin:0}
-h1 .cursor{display:inline-block;width:3px;height:.9em;background:var(--lav-ink);margin-left:4px;vertical-align:-2px;animation:blink 1.1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-.title{font-family:var(--mono);font-size:13.5px;color:var(--lav-ink);margin:10px 0 0;background:var(--lav);display:inline-block;padding:3px 9px;border-radius:6px}
-.sub{color:var(--muted);margin:12px 0 0;max-width:34ch}
-.status{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--muted)}
-.status i{width:8px;height:8px;border-radius:50%;background:var(--mint-ink);box-shadow:0 0 0 3px var(--mint);display:inline-block}
-.toc{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:2px;font-family:var(--mono);font-size:13px}
-.toc a{color:var(--muted);display:block;padding:4px 10px;border-radius:6px;margin-left:-10px}
-.toc a::before{content:"./";color:var(--faint)}
-.toc a:hover{color:var(--lav-ink);background:var(--lav);text-decoration:none}
-.socials{display:flex;flex-wrap:wrap;gap:8px}
-.btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--fg);border:1px solid var(--line);background:var(--surface);padding:7px 12px;border-radius:8px;cursor:pointer;font-family:var(--sans)}
-.btn:hover{border-color:var(--lav-ink);text-decoration:none}
-.btn.primary{background:var(--lav);color:var(--lav-ink);border-color:transparent;font-family:var(--mono);font-size:12.5px}
-.btn svg{width:14px;height:14px;fill:currentColor}
-.email{font-family:var(--mono);font-size:12px;color:var(--muted);user-select:all}
+/* hero */
+.hero{padding-block:56px 64px}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(48px,7vw,88px);line-height:1;letter-spacing:-.015em;margin:0}
+h1 em{font-style:italic;color:var(--mark)}
+.intro{display:flex;flex-direction:column;gap:18px;margin-top:32px}
+.intro .hlinks{font-family:var(--sans);font-size:15px;color:var(--ink-2);margin:0}
+.boxes{display:flex;flex-wrap:wrap;gap:10px}
+.box{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border:1px solid var(--ink);border-radius:3px;font-size:14.5px;font-weight:500;text-decoration:none;color:var(--ink);background:transparent;transition:background .15s,color .15s}
+.box:hover{background:var(--ink);color:var(--paper);text-decoration:none}
+.intro p{font-family:var(--serif);font-size:clamp(19px,1.9vw,23px);line-height:1.35;margin:0;max-width:34ch}
+.now{border-left:1px solid var(--ink);padding-left:18px;font-size:15px;color:var(--ink-2)}
+.now .label{display:block;margin-bottom:6px;color:var(--mark)}
+.now p{font-family:var(--sans);font-size:15px;line-height:1.55;margin:0 0 6px}
 
-/* Main */
-main{min-width:0;display:flex;flex-direction:column;gap:64px}
-section{scroll-margin-top:32px}
-h2{font-family:var(--mono);font-size:14px;font-weight:600;color:var(--fg);margin:0 0 22px;display:flex;align-items:center;gap:10px}
-h2 .cm{color:var(--faint);font-weight:400}
-h2::after{content:"";flex:1;height:1px;background:var(--line)}
+.sub{font-family:var(--mono);font-size:13.5px;color:var(--ink-2);margin:14px 0 0}
+.cmt{font-family:var(--mono);font-size:13px;color:var(--mark);margin:0}
+.spec{font-family:var(--mono);font-size:12px;color:var(--ink);background:var(--plate);padding:6px 10px;border-radius:3px;margin:0;overflow-x:auto;white-space:nowrap}
+.eq{font-family:var(--mono);font-size:12.5px;color:var(--ink-2);margin:0}
+.tl p{margin:4px 0 0;color:var(--ink-2);font-size:14.5px}
+.code{background:#fbf8f2;border:1px solid var(--rule);border-radius:4px;overflow:hidden;max-width:560px}
+.code-bar{display:flex;align-items:center;gap:7px;padding:8px 14px;border-bottom:1px solid var(--rule)}
+.code-bar i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.code-bar i:nth-child(1){background:#e9a9a0}.code-bar i:nth-child(2){background:#e8cf8a}.code-bar i:nth-child(3){background:#a9cfae}
+.code-bar span{margin-left:8px;font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+.code pre{margin:0;padding:14px 18px;font-family:var(--mono);font-size:13px;line-height:1.75;overflow-x:auto;color:var(--ink)}
+.k{color:var(--mark)}.s{color:var(--green)}.p{color:#2f5a86}
+.beyond{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}
+.beyond > div{padding:14px 0;border-top:1px solid var(--rule);min-width:0}
+.beyond > div:nth-child(-n+2){border-top:0;padding-top:2px}
+.beyond h3{font-family:var(--serif);font-weight:400;font-size:21px;margin:0 0 2px}
+.beyond p{margin:0;color:var(--ink-2);font-size:15px}
+.beyond .ach{font-family:var(--mono);font-size:12px;color:var(--mark);margin-top:6px}
+@media (max-width:560px){.beyond{grid-template-columns:1fr}.beyond > div:nth-child(2){border-top:1px solid var(--rule);padding-top:14px}}
+/* section heads */
+.shead{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;border-top:1px solid var(--ink);padding-top:14px;margin-bottom:28px}
+.shead .cm-l{font-family:var(--mono);font-size:13px;color:var(--mark);margin-right:10px;letter-spacing:0;vertical-align:4px}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3.6vw,42px);line-height:1;margin:0;letter-spacing:-.01em}
+h2 em{font-style:italic}
+section{padding-block:28px 64px}
 
-/* Terminal card */
-.term{background:var(--term);color:var(--term-fg);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 10px 30px -16px rgba(60,40,140,.18)}
-.term-bar{display:flex;align-items:center;gap:7px;padding:11px 14px;background:var(--term-bar);border-bottom:1px solid var(--line)}
-.term-bar i{width:11px;height:11px;border-radius:50%;display:inline-block}
-.term-bar i:nth-child(1){background:#f7a8b8}.term-bar i:nth-child(2){background:#f8dc8a}.term-bar i:nth-child(3){background:#a6e3c4}
-.term-bar span{margin-left:10px;font-family:var(--mono);font-size:12px;color:var(--faint)}
-.term pre{margin:0;padding:18px 20px;font-family:var(--mono);font-size:13px;line-height:1.75;overflow-x:auto}
-.k{color:var(--sx-k)}.s{color:var(--sx-s)}.n{color:var(--sx-n)}.p{color:var(--sx-p)}.c{color:var(--sx-c)}.pk{color:#f7b0d0}
-.about-text p{margin:18px 0 0;color:var(--muted);max-width:66ch}
-.about-text strong{color:var(--fg);font-weight:500}
+/* work grid */
+.work{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 36px}
+.tile{min-width:0;display:flex;flex-direction:column;gap:12px}
+.tile.wide{grid-column:1 / -1}
+.plate{background:var(--plate);border-radius:4px;aspect-ratio:16 / 10;max-width:100%;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:22px}
+.tile.wide .plate{aspect-ratio:21 / 8}
+.tile h3{font-family:var(--serif);font-weight:400;font-size:clamp(24px,2.4vw,30px);line-height:1.05;margin:4px 0 0}
+.tile h3 em{font-style:italic}
+.tile p{margin:0;color:var(--ink-2);max-width:60ch}
+.tline{display:flex;justify-content:space-between;align-items:baseline;gap:8px 20px;flex-wrap:wrap}
+.stack{font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+.links{display:flex;gap:16px;font-size:14.5px}
+.tile.wide .body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px 36px;align-items:start}
 
-/* Experience */
-.exp{display:flex;flex-direction:column;gap:4px;border-left:2px dashed var(--line);margin-left:6px;padding-left:22px}
-.job{position:relative;display:grid;grid-template-columns:128px minmax(0,1fr);gap:18px;padding:14px 16px;border-radius:10px;transition:background .15s}
-.job::before{content:"";position:absolute;left:-30px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--faint)}
-.job.now::before{background:var(--mint);border-color:var(--mint-ink)}
-.job:hover{background:var(--surface);box-shadow:0 0 0 1px var(--line)}
-.date{font-family:var(--mono);font-size:12px;color:var(--faint);padding-top:3px;font-variant-numeric:tabular-nums;white-space:nowrap}
-.job h3{margin:0;font-size:16px;font-weight:600;line-height:1.35}
-.job .org{color:var(--muted);font-size:14px;margin-top:2px}
-.badge{display:inline-block;font-family:var(--mono);font-size:10.5px;color:var(--mint-ink);background:var(--mint);padding:2px 8px;border-radius:999px;margin-left:8px;vertical-align:2px}
-.job ul{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:14px}
-.job li{margin-bottom:4px}
-.job li::marker{content:"› ";color:var(--lav-ink);font-family:var(--mono)}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
-.tags span{font-family:var(--mono);font-size:11.5px;padding:3px 9px;border-radius:6px}
-.t-lav{background:var(--lav);color:var(--lav-ink)}.t-mint{background:var(--mint);color:var(--mint-ink)}
-.t-peach{background:var(--peach);color:var(--peach-ink)}.t-sky{background:var(--sky);color:var(--sky-ink)}
-.t-butter{background:var(--butter);color:var(--butter-ink)}.t-pink{background:var(--pink);color:var(--pink-ink)}
+/* plate: order book */
+.ob{width:min(100%,560px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:22px;font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums}
+.lad .r{display:grid;grid-template-columns:1fr 1fr;padding:2px 8px;position:relative}
+.lad .r span{position:relative;z-index:1}.lad .r span:last-child{text-align:right}
+.lad .r i{position:absolute;top:1px;bottom:1px;right:0;z-index:0;border-radius:2px}
+.lad .a span:first-child{color:var(--mark)} .lad .a i{background:var(--mark-soft)}
+.lad .b span:first-child{color:var(--green)} .lad .b i{background:var(--green-soft)}
+.lad .sp{padding:4px 8px;margin:3px 0;border-block:1px dashed var(--rule);color:var(--ink-3);font-size:11.5px}
+.tape .t{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid var(--rule);color:var(--ink-2)}
+.tape .t b{font-weight:500}.tape .t .bu{color:var(--green)}.tape .t .se{color:var(--mark)}
+.tape .label{display:block;margin-bottom:4px}
 
-/* Projects as editor files */
-.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-.proj{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;min-width:0;transition:transform .15s,box-shadow .15s}
-.proj:hover{transform:translateY(-3px);box-shadow:0 12px 24px -14px rgba(60,40,140,.3)}
-.tab{display:flex;align-items:center;gap:8px;padding:9px 16px;font-family:var(--mono);font-size:12px;font-weight:500}
-.tab::before{content:"";width:8px;height:8px;border-radius:2px;background:currentColor;opacity:.7}
-.proj .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
-.proj .meta{font-family:var(--mono);font-size:11.5px;color:var(--faint)}
-.proj h3{margin:0;font-size:18px;font-weight:600}
-.proj p{margin:0;color:var(--muted);font-size:14px}
-.proj .metric{font-family:var(--mono);font-size:12px;color:var(--fg)}
-.proj .metric::before{content:"→ ";color:var(--lav-ink)}
-.proj .tags{margin-top:auto;padding-top:4px}
-.plinks{display:flex;gap:14px;flex-wrap:wrap;padding-top:12px;margin-top:2px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:12.5px}
-.plinks a{font-weight:500}
-.proj.feature{grid-column:1 / -1}
+/* plate: market maker */
+.mm{width:100%;height:100%}
+.mm svg{width:100%;height:100%;display:block}
 
-/* Skills */
-.skills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.sk{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;min-width:0}
-.sk h4{margin:0 0 10px;font-family:var(--mono);font-size:12.5px;font-weight:500}
-.sk .tags{margin-top:0}
-.note{font-family:var(--mono);font-size:12px;color:var(--faint);margin:12px 0 0}
+/* plate: chimetrics */
+.cm{width:min(100%,420px);background:var(--paper);border-radius:3px;padding:14px;box-shadow:0 1px 0 var(--rule)}
+.cm .tabs{display:flex;gap:6px;margin-bottom:12px}
+.cm .tabs span{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:3px;color:var(--ink-3);border:1px solid var(--rule)}
+.cm .tabs span.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.cm .bars{display:flex;align-items:flex-end;gap:5px;height:90px;border-bottom:1px solid var(--ink-3)}
+.cm .bars i{flex:1;background:var(--ink-2);border-radius:2px 2px 0 0}
+.cm .bars i.hl{background:var(--mark)}
 
-/* Education */
-.edu{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;grid-template-columns:128px minmax(0,1fr);gap:18px}
-.edu h3{margin:0;font-size:16px;font-weight:600}
-.edu .org{color:var(--muted);font-size:14px}
-.cw{margin-top:18px;padding-top:16px;border-top:1px dashed var(--line);display:flex;flex-direction:column;gap:14px}
-.cw h4{margin:0 0 8px;font-family:var(--mono);font-size:12px;font-weight:500;color:var(--faint)}
-.course{display:inline-flex;align-items:baseline;gap:7px;font-size:13px;background:var(--bg);border:1px solid var(--line);padding:4px 10px;border-radius:8px}
-.course code{font-family:var(--mono);font-size:11px;color:var(--faint)}
-.courses{display:flex;flex-wrap:wrap;gap:6px}
+/* plate: facecart */
+.fc{display:flex;align-items:center;gap:22px}
+.ring{width:118px;height:118px;flex:none}
+.fc .pairs{display:flex;flex-direction:column;gap:8px;font-family:var(--mono);font-size:11.5px}
+.fc .pairs span{background:var(--paper);padding:5px 9px;border-radius:3px;color:var(--ink-2)}
+.fc .pairs span b{font-weight:500}.fc .bad{color:var(--mark)}.fc .ok{color:var(--green)}
 
-/* Beyond */
-.beyond{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.beyond div{min-width:0;padding:16px 18px;border-radius:14px;transition:transform .2s cubic-bezier(.3,1.6,.5,1)}
-.beyond div:nth-child(odd):hover{transform:rotate(-1.5deg) translateY(-3px)}
-.beyond div:nth-child(even):hover{transform:rotate(1.5deg) translateY(-3px)}
-.beyond .ico{font-size:22px;line-height:1;display:block;margin-bottom:8px}
-.beyond h4{margin:0 0 4px;font-size:15px;font-weight:600}
-.beyond p{margin:0;font-size:14px;color:var(--muted)}
+/* plate: parallelyou */
+.py{width:100%;height:100%}
+.py svg{width:100%;height:100%;display:block}
 
-footer{border-top:1px solid var(--line);padding-top:22px;color:var(--faint);font-family:var(--mono);font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:48px}
+.about .prose p{font-family:var(--serif);font-size:clamp(20px,2vw,24px);line-height:1.4;margin:0 0 16px;max-width:36ch}
+.about .prose p em{color:var(--mark)}
+.offline{list-style:none;margin:0;padding:0}
+.offline li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;padding:10px 0;border-top:1px solid var(--rule);font-size:15px}
+.offline li:first-child{border-top:0;padding-top:4px}
+.offline b{font-family:var(--serif);font-weight:400;font-size:19px;line-height:1.3}
+.offline span{color:var(--ink-2)}
 
-@media (max-width:880px){
-  .layout{grid-template-columns:1fr;gap:44px;padding-block:40px}
-  aside{position:static}
-  .toc{flex-direction:row;flex-wrap:wrap;gap:4px 14px}
-  .toc a{margin-left:0;padding:4px 6px}
-  main{gap:52px}
+/* experience + toolkit */
+.split{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:48px}
+.tl{list-style:none;margin:0;padding:0}
+.tl li{display:grid;grid-template-columns:160px minmax(0,1fr);gap:16px;padding:11px 0;border-top:1px solid var(--rule)}
+.tl li:first-child{border-top:0;padding-top:2px}
+.tl .when{font-family:var(--mono);font-size:12px;color:var(--ink-3);padding-top:3px;font-variant-numeric:tabular-nums}
+.tl b{font-weight:500}
+.tl span{color:var(--ink-2)}
+.tl .cur{font-family:var(--mono);font-size:10.5px;color:var(--mark);margin-left:8px;text-transform:uppercase;letter-spacing:.06em}
+.kit h3{font-family:var(--serif);font-weight:400;font-size:22px;margin:0 0 6px}
+.kit p{margin:0 0 20px;color:var(--ink-2);font-size:15px}
+.kit .label{display:block;margin-bottom:4px}
+
+/* contact */
+.contact{padding-block:40px 32px;border-top:1px solid var(--ink)}
+.contact .big{font-family:var(--serif);font-size:clamp(42px,6vw,76px);line-height:.95;margin:16px 0 22px;letter-spacing:-.02em}
+.contact .big em{font-style:italic;color:var(--mark)}
+.crow{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;font-size:16px}
+.copy{background:var(--ink);color:var(--paper);border:0;border-radius:3px;padding:10px 16px;font:500 15px var(--sans);cursor:pointer}
+.copy:hover{background:var(--mark)}
+footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-block:28px 48px;font-size:13px;color:var(--ink-3)}
+
+@media (max-width:860px){
+  .intro,.about,.split,.tile.wide .body{grid-template-columns:1fr;gap:28px}
+  .tile.wide .body{gap:12px}
+  .work{grid-template-columns:1fr;gap:44px}
+  .tile.wide .plate{aspect-ratio:16 / 10}
+  .hero{padding-block:36px 48px}
 }
-@media (max-width:580px){
-  .job,.edu{grid-template-columns:1fr;gap:4px}
-  .projects,.skills,.beyond{grid-template-columns:1fr}
-  .term pre{font-size:12px;padding:14px}
+@media (max-width:520px){
+  .ob{grid-template-columns:1fr}.ob .tape{display:none}
+  .offline li,.tl li{grid-template-columns:1fr;gap:2px}
+  .fc{flex-direction:column;gap:12px}
+  .plate{padding:14px}
 }
-/* intro: typed greeting + name, then the rest settles in (JS adds .intro only when motion is allowed) */
-.reveal{transition:opacity .55s ease, transform .55s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0ms)}
-html.intro .reveal{opacity:0;transform:translateY(10px)}
-html.intro h1 .cursor{animation:none}
-.skip{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));font-family:var(--mono);font-size:11.5px;color:var(--faint);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:5px 10px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s}
-html.intro .skip{opacity:1;pointer-events:auto}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+@media (prefers-reduced-motion:no-preference){
+  h1{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+  .intro{animation:rise .9s .15s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes rise{from{transform:translateY(12px);opacity:.001}to{transform:none;opacity:1}}
+}
 </style>
-</head>
-<body>
 
+<div class="page">
+  <header class="mast">
+    <a class="me" href="#top">Davina Titus</a>
+    <nav aria-label="Sections"><a href="#work">Work</a><a href="#about">About</a><a href="#path">Experience</a><a href="#contact">Contact</a></nav>
+  </header>
 
-<div class="layout">
-  <aside>
-    <div>
-      <p class="hello">&gt; hello, world. i'm</p>
-      <h1>Davina Titus<span class="cursor" aria-hidden="true"></span></h1>
-      <p class="title">software engineer · quant-curious</p>
-      <p class="sub">Computer Science (Software Engineering) + Economics. I build full-stack apps and AI tools, and I'm drawn to where code meets markets.</p>
-    </div>
-    <span class="status"><i></i>Chicago, IL · Class of 2028</span>
-    <ul class="toc">
-      <li><a href="#about">about</a></li>
-      <li><a href="#experience">experience</a></li>
-      <li><a href="#projects">projects</a></li>
-      <li><a href="#skills">skills</a></li>
-      <li><a href="#education">education</a></li>
-    </ul>
-    <div class="socials">
-      <button class="btn primary" id="copyBtn" type="button">copy email</button>
-      <a class="btn" href="https://github.com/davina-titus" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
-      <a class="btn" href="https://www.linkedin.com/in/davina-titus/" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1.15C0 .52.52 0 1.17 0h13.66C15.48 0 16 .52 16 1.15v13.7c0 .63-.52 1.15-1.17 1.15H1.17C.52 16 0 15.48 0 14.85V1.15zM4.94 13.4V6.17h-2.4v7.23h2.4zM3.74 5.18c.84 0 1.36-.55 1.36-1.25-.02-.71-.52-1.25-1.35-1.25-.82 0-1.36.54-1.36 1.25 0 .7.52 1.25 1.33 1.25h.02zm4.93 8.22V9.36c0-.21.02-.43.08-.58.17-.43.57-.88 1.23-.88.87 0 1.21.66 1.21 1.63v3.87h2.4V9.25c0-2.22-1.18-3.25-2.76-3.25-1.27 0-1.84.7-2.16 1.19v.02h-.02l.02-.02V6.17h-2.4c.03.68 0 7.23 0 7.23h2.4z"/></svg>LinkedIn</a>
-    </div>
-    <span class="email" id="email">davina.t.titus@gmail.com</span>
-  </aside>
-
-  <main>
-    <section id="about">
-      <h2><span class="cm">//</span> about</h2>
-      <div class="term" role="img" aria-label="Code card summarizing Davina: CS + Economics at UIC, class of 2028, focused on full-stack, applied AI and HCI.">
-        <div class="term-bar"><i></i><i></i><i></i><span>davina.ts</span></div>
+  <div class="hero" id="top">
+    <h1>Davina Titus</h1>
+    <div class="intro">
+      <p>Computer Science (Software Engineering) + Economics. I build full-stack apps and AI tools, and I'm drawn to where code meets markets.</p>
+      <div class="code" role="img" aria-label="Code card: focus on full-stack and applied AI; exploring quant dev and quant trading; clubs WiCS, ACM and SparkHacks; Dean's List.">
+        <div class="code-bar"><i></i><i></i><i></i><span>davina.ts</span></div>
 <pre><span class="k">const</span> <span class="p">davina</span> = {
-  school:    <span class="s">"University of Illinois Chicago"</span>,
-  major:     <span class="s">"Computer Science — Software Engineering"</span>,
-  minor:     <span class="s">"Economics"</span>,
-  gradYear:  <span class="n">2028</span>,
-  deansList: <span class="k">true</span>,
   focus:     [<span class="s">"full-stack"</span>, <span class="s">"applied AI"</span>],
   exploring: [<span class="s">"quant dev"</span>, <span class="s">"quant trading"</span>],
   clubs:     [<span class="s">"WiCS"</span>, <span class="s">"ACM"</span>, <span class="s">"SparkHacks"</span>],
-  <span class="c">// currently: TA-ing calculus for 100+ students</span>
+  deansList: <span class="k">true</span>,
 };</pre>
       </div>
-    </section>
+      <div class="boxes"><a class="box" href="https://github.com/davina-titus" target="_blank" rel="noopener">GitHub ↗</a><a class="box" href="https://www.linkedin.com/in/davina-titus/" target="_blank" rel="noopener">LinkedIn ↗</a><a class="box" href="#contact">Email ↓</a></div>
+    </div>
+  </div>
 
-    <section id="experience">
-      <h2><span class="cm">//</span> experience</h2>
-      <div class="exp">
-        <article class="job now">
-          <div class="date">Aug 2026 — now</div>
-          <div>
-            <h3>Undergraduate Math Teaching Assistant<span class="badge">current</span></h3>
-            <div class="org">University of Illinois Chicago · Calculus</div>
-          </div>
-        </article>
-        <article class="job now">
-          <div class="date">Aug 2026 — now</div>
-          <div>
-            <h3>Student Ambassador<span class="badge">current</span></h3>
-            <div class="org">E.M.B.E.R.</div>
-          </div>
-        </article>
-        <article class="job">
-          <div class="date">Jul — Aug 2026</div>
-          <div>
-            <h3>AI Engineer Intern</h3>
-            <div class="org">AI Decoder Academy · Hybrid</div>
-            <div class="tags"><span class="t-sky">React</span><span class="t-lav">Product</span><span class="t-peach">EdTech</span></div>
-          </div>
-        </article>
-        <article class="job">
-          <div class="date">Jun 2025 — Sep 2026</div>
-          <div>
-            <h3>AI Model Trainer</h3>
-            <div class="org">Handshake · Remote</div>
-          </div>
-        </article>
-        <article class="job">
-          <div class="date">May — Jun 2026</div>
-          <div>
-            <h3>Research &amp; Development Intern</h3>
-            <div class="org">Learning + Interest + Technology (LIT) Lab, UIC</div>
-            <div class="tags"><span class="t-pink">HCI</span><span class="t-sky">Mobile UI</span><span class="t-mint">Research</span></div>
-          </div>
-        </article>
-        <article class="job">
-          <div class="date">May 2025 — Apr 2026</div>
-          <div>
-            <h3>AI/ML Fellow</h3>
-            <div class="org">Break Through Tech @ Cornell Tech · Remote</div>
-          </div>
-        </article>
-        <article class="job">
-          <div class="date">Jun — Aug 2025</div>
-          <div>
-            <h3>Software Engineer Intern</h3>
-            <div class="org">EY (Ernst &amp; Young)</div>
-            <div class="tags"><span class="t-butter">Python</span><span class="t-lav">LLMs</span><span class="t-mint">APIs</span></div>
-          </div>
-        </article>
-      </div>
-    </section>
+  <section id="work">
+    <div class="shead"><h2><span class="cm-l">//</span>Projects</h2><span class="label">C++ · Python · TypeScript</span></div>
+    <div class="work">
 
-    <section id="projects">
-      <h2><span class="cm">//</span> projects</h2>
-      <div class="projects">
-        <article class="proj feature">
-          <div class="tab t-peach">order_book.cpp</div>
-          <div class="body">
-            <div class="meta">markets · C++17</div>
-            <h3>Limit Order Book</h3>
-            <p>Exchange-style matching engine with price-time priority, limit, market and IOC orders, O(1) cancels, and integer tick prices. Ships with a replay tool, 17 unit tests and CI.</p>
-            <div class="metric">~3.3M ops/sec · ~170 ns median latency</div>
-            <div class="tags"><span class="t-peach">C++17</span><span class="t-lav">Data structures</span><span class="t-mint">CMake</span><span class="t-sky">GitHub Actions</span></div>
-            <div class="plinks"><a href="https://github.com/davina-titus/orderbook" target="_blank" rel="noopener">code ↗</a><a href="https://courageous-frangollo-012c00.netlify.app" target="_blank" rel="noopener">live demo ↗</a></div>
-          </div>
-        </article>
-        <article class="proj">
-          <div class="tab t-mint">market_maker.py</div>
-          <div class="body">
-            <div class="meta">markets · stochastic control</div>
-            <h3>Avellaneda-Stoikov Market Maker</h3>
-            <p>Implementation of the Avellaneda-Stoikov (2008) model: inventory-aware quotes from the closed-form HJB solution, benchmarked against naive fixed-spread quoting with Monte Carlo runs and an interactive dashboard.</p>
-            <div class="metric">beats naive quoting on Sharpe and drawdown</div>
-            <div class="tags"><span class="t-butter">Python</span><span class="t-lav">NumPy</span><span class="t-sky">Dash</span><span class="t-mint">Monte Carlo</span></div>
-            <div class="plinks"><a href="https://github.com/davina-titus/avellaneda-stoikov" target="_blank" rel="noopener">code ↗</a><a href="https://stellar-faun-e1c90a.netlify.app" target="_blank" rel="noopener">live demo ↗</a></div>
-          </div>
-        </article>
-        <article class="proj">
-          <div class="tab t-sky">chimetrics.jsx</div>
-          <div class="body">
-            <div class="meta">civic data · react app</div>
-            <h3>ChiMetrics</h3>
-            <p>Live dashboard of Chicago public data: crime trends, CTA ridership, red-light and speed camera violations, and 311 requests. Rebuilt from an earlier C++ traffic-violation analyzer.</p>
-            <div class="metric">real-time data via Socrata Open Data API</div>
-            <div class="tags"><span class="t-sky">React</span><span class="t-lav">Vite</span><span class="t-mint">Recharts</span><span class="t-butter">JavaScript</span></div>
-            <div class="plinks"><a href="https://github.com/davina-titus/ChiMetrics" target="_blank" rel="noopener">code ↗</a><a href="https://chi-metrics.vercel.app" target="_blank" rel="noopener">live demo ↗</a></div>
-          </div>
-        </article>
-        <article class="proj">
-          <div class="tab t-pink">facecart.tsx</div>
-          <div class="body">
-            <div class="meta">SparkHacks 2026 · team lead</div>
-            <h3>FaceCart</h3>
-            <p>Full-stack AI skincare storefront built by a team of four in 24 hours, with a conflict-detection engine that scores product compatibility from 0 to 100.</p>
-            <div class="metric">40+ products · 200+ ingredient combinations</div>
-            <div class="tags"><span class="t-sky">TypeScript</span><span class="t-mint">Node.js</span><span class="t-peach">Express</span><span class="t-lav">GPT-4</span></div>
-            <div class="plinks"><a href="https://github.com/davina-titus/facecartApp" target="_blank" rel="noopener">code ↗</a></div>
-          </div>
-        </article>
-        <article class="proj">
-          <div class="tab t-lav">parallel-you.js</div>
-          <div class="body">
-            <div class="meta">personal project</div>
-            <h3>ParallelYou</h3>
-            <p>An AI multiverse simulator: enter your background, goals and risk tolerance, and Claude generates three distinct career timelines with salary projections over 20 years. Compare two people head to head and export results as an image.</p>
-            <div class="metric">3 parallel timelines · 20-year salary charts</div>
-            <div class="tags"><span class="t-lav">Claude API</span><span class="t-sky">React</span><span class="t-butter">JavaScript</span></div>
-            <div class="plinks"><a href="https://github.com/davina-titus/parallel-you" target="_blank" rel="noopener">code ↗</a><a href="https://youtu.be/glDdiWyR_kc" target="_blank" rel="noopener">demo video ↗</a></div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="skills">
-      <h2><span class="cm">//</span> skills</h2>
-      <div class="skills">
-        <div class="sk"><h4>languages</h4><div class="tags"><span class="t-butter">Python</span><span class="t-butter">JavaScript</span><span class="t-butter">TypeScript</span><span class="t-butter">C++</span><span class="t-butter">C</span><span class="t-butter">SQL</span><span class="t-butter">HTML/CSS</span></div></div>
-        <div class="sk"><h4>frameworks</h4><div class="tags"><span class="t-sky">React</span><span class="t-sky">Node.js</span><span class="t-sky">Express</span><span class="t-sky">Vite</span><span class="t-sky">Tailwind</span><span class="t-sky">Recharts</span></div></div>
-        <div class="sk"><h4>ai / ml</h4><div class="tags"><span class="t-lav">LLM integration</span><span class="t-lav">Prompt engineering</span><span class="t-lav">Model benchmarking</span><span class="t-lav">GPT-4</span><span class="t-lav">Claude</span><span class="t-lav">Gemini</span><span class="t-lav">Llama</span><span class="t-lav">Azure AI</span></div></div>
-        <div class="sk"><h4>tools &amp; concepts</h4><div class="tags"><span class="t-mint">Git</span><span class="t-mint">REST APIs</span><span class="t-mint">Data structures</span><span class="t-mint">OOP</span><span class="t-mint">Software design</span><span class="t-mint">Data analysis</span><span class="t-mint">Mathematics</span></div></div>
-      </div>
-    </section>
-
-    <section id="education">
-      <h2><span class="cm">//</span> education</h2>
-      <div class="edu">
-        <div class="date">Expected May 2028</div>
-        <div>
-          <h3>University of Illinois Chicago</h3>
-          <div class="org">B.S. Computer Science (Software Engineering) · Minor in Economics</div>
-          <div class="tags"><span class="t-mint">Dean's List</span><span class="t-pink">WiCS</span><span class="t-sky">ACM</span><span class="t-peach">SparkHacks</span></div>
-          <div class="cw">
-            <div>
-              <h4>// relevant coursework: math</h4>
-              <div class="courses">
-                <span class="course"><code>MATH 180–210</code>Calculus I, II &amp; III</span>
-                <span class="course"><code>MATH 310</code>Linear Algebra</span>
-                <span class="course"><code>MATH 220</code>Differential Equations</span>
-              </div>
+      <article class="tile wide">
+        <div class="plate" role="img" aria-label="Preview of the order book: asks above, bids below, and a trade tape">
+          <div class="ob">
+            <div class="lad">
+              <div class="r a"><i style="width:62%"></i><span>101.25</span><span>500</span></div>
+              <div class="r a"><i style="width:38%"></i><span>101.00</span><span>300</span></div>
+              <div class="r a"><i style="width:19%"></i><span>100.75</span><span>150</span></div>
+              <div class="r a"><i style="width:38%"></i><span>100.50</span><span>300</span></div>
+              <div class="sp">spread 0.50</div>
+              <div class="r b"><i style="width:31%"></i><span>100.00</span><span>250</span></div>
+              <div class="r b"><i style="width:25%"></i><span>99.90</span><span>200</span></div>
+              <div class="r b"><i style="width:50%"></i><span>99.75</span><span>400</span></div>
+              <div class="r b"><i style="width:75%"></i><span>99.50</span><span>600</span></div>
             </div>
-            <div>
-              <h4>// relevant coursework: cs</h4>
-              <div class="courses">
-                <span class="course"><code>CS 251</code>Data Structures</span>
-                <span class="course"><code>CS 301</code>Languages &amp; Automata</span>
-                <span class="course"><code>CS 151</code>Mathematical Foundations of Computing</span>
-                <span class="course"><code>CS 211</code>Programming Practicum</span>
-                <span class="course"><code>CS 141</code>Program Design II</span>
-              </div>
+            <div class="tape">
+              <span class="label">Trades</span>
+              <div class="t"><span class="bu">BUY</span><b>200 @ 100.50</b></div>
+              <div class="t"><span class="bu">BUY</span><b>50 @ 100.50</b></div>
+              <div class="t"><span class="se">SELL</span><b>250 @ 100.00</b></div>
+              <div class="t"><span class="se">SELL</span><b>150 @ 99.75</b></div>
+              <div class="t"><span class="bu">BUY</span><b>300 @ 101.00</b></div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+        <div class="body">
+          <div>
+            <span class="label">Markets · C++17</span>
+            <h3>Limit Order <em>Book</em></h3>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <p>An exchange-style matching engine with price-time priority, limit, market and IOC orders, and prices stored as integer ticks to avoid floating-point error. Tested with 17 unit tests under AddressSanitizer in CI.</p>
+            <p class="spec">insert O(log L) · cancel O(1) · ~3.3M ops/s · p50 ~170 ns</p>
+            <div class="tline"><span class="stack">C++17 · CMake · GitHub Actions</span><span class="links"><a href="https://courageous-frangollo-012c00.netlify.app" target="_blank" rel="noopener">Live demo</a><a href="https://github.com/davina-titus/orderbook" target="_blank" rel="noopener">Code</a></span></div>
+          </div>
+        </div>
+      </article>
 
-    <section id="beyond">
-      <h2><span class="cm">//</span> outside of code</h2>
-      <div class="beyond">
-        <div class="t-pink"><span class="ico" aria-hidden="true">🎨</span><h4>Painting</h4><p>Give me a canvas and a messy palette and I'll lose track of time. My favorite way to switch off.</p></div>
-        <div class="t-peach"><span class="ico" aria-hidden="true">🖨️</span><h4>Art for a Cause</h4><p>During COVID I started selling my art as prints and gave part of each sale to ACCESS.</p></div>
-        <div class="t-lav"><span class="ico" aria-hidden="true">🎹</span><h4>Piano</h4><p>I've been playing since I was 8. Taking song requests, within reason.</p></div>
-        <div class="t-mint"><span class="ico" aria-hidden="true">🏸</span><h4>Track &amp; Badminton</h4><p>I'll happily take you on in a rally, then race you to the snacks.</p></div>
-        <div class="t-sky"><span class="ico" aria-hidden="true">✈️</span><h4>Travel</h4><p>Collector of passport stamps and window seats.</p></div>
-        <div class="t-butter"><span class="ico" aria-hidden="true">👑</span><h4>Clash Royale</h4><p>Max trophies, and yes, I'm the one spamming the laughing emote.</p></div>
-      </div>
-    </section>
+      <article class="tile">
+        <div class="plate" role="img" aria-label="Preview of the market-making simulation: mid price with the A-S quote band around the reservation price">
+          <div class="mm">
+            <svg viewBox="0 0 520 180" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M8.0 116.9 L12.0 121.7 L16.1 124.1 L20.1 119.1 L24.1 120.8 L28.2 121.3 L32.2 127.0 L36.2 123.4 L40.3 122.9 L44.3 121.7 L48.3 124.0 L52.4 109.4 L56.4 105.0 L60.4 114.7 L64.4 106.8 L68.5 111.3 L72.5 117.4 L76.5 119.0 L80.6 118.4 L84.6 105.4 L88.6 102.0 L92.7 100.1 L96.7 105.2 L100.7 106.3 L104.8 97.0 L108.8 96.0 L112.8 99.2 L116.9 102.3 L120.9 109.8 L124.9 123.5 L129.0 112.5 L133.0 114.4 L137.0 108.4 L141.1 91.0 L145.1 86.0 L149.1 86.3 L153.2 98.9 L157.2 96.1 L161.2 98.5 L165.2 107.6 L169.3 107.6 L173.3 86.7 L177.3 69.8 L181.4 65.1 L185.4 72.9 L189.4 62.4 L193.5 70.8 L197.5 73.2 L201.5 86.5 L205.6 78.9 L209.6 76.4 L213.6 76.1 L217.7 79.5 L221.7 71.7 L225.7 77.6 L229.8 67.6 L233.8 51.3 L237.8 58.2 L241.9 50.7 L245.9 49.6 L249.9 50.6 L254.0 41.5 L258.0 30.5 L262.0 31.1 L266.0 42.0 L270.1 50.9 L274.1 48.0 L278.1 56.0 L282.2 58.8 L286.2 56.6 L290.2 54.7 L294.3 54.9 L298.3 45.2 L302.3 50.0 L306.4 61.9 L310.4 49.0 L314.4 54.1 L318.5 40.3 L322.5 35.4 L326.5 44.0 L330.6 43.7 L334.6 42.3 L338.6 44.7 L342.7 37.9 L346.7 39.8 L350.7 50.4 L354.8 43.7 L358.8 38.2 L362.8 42.9 L366.8 33.8 L370.9 35.2 L374.9 37.7 L378.9 35.9 L383.0 30.7 L387.0 30.6 L391.0 33.7 L395.1 27.2 L399.1 23.0 L403.1 23.8 L407.2 8.0 L411.2 12.1 L415.2 12.9 L419.3 20.8 L423.3 20.8 L427.3 25.9 L431.4 24.0 L435.4 30.2 L439.4 32.2 L443.5 30.4 L447.5 26.0 L451.5 18.3 L455.6 15.8 L459.6 22.1 L463.6 23.5 L467.6 15.4 L471.7 19.4 L475.7 19.9 L479.7 16.6 L483.8 16.1 L487.8 19.6 L491.8 20.6 L495.9 15.6 L499.9 22.2 L503.9 25.0 L508.0 30.7 L512.0 36.4 L512.0 71.1 L508.0 65.6 L503.9 59.9 L499.9 57.2 L495.9 50.7 L491.8 55.8 L487.8 54.9 L483.8 51.5 L479.7 52.1 L475.7 55.4 L471.7 55.0 L467.6 51.1 L463.6 59.3 L459.6 58.0 L455.6 51.8 L451.5 54.4 L447.5 62.2 L443.5 66.6 L439.4 68.5 L435.4 66.6 L431.4 60.5 L427.3 62.5 L423.3 57.5 L419.3 57.6 L415.2 49.7 L411.2 49.0 L407.2 45.0 L403.1 60.9 L399.1 60.2 L395.1 64.5 L391.0 71.1 L387.0 68.0 L383.0 68.2 L378.9 73.5 L374.9 75.4 L370.9 73.0 L366.8 71.6 L362.8 80.8 L358.8 76.2 L354.8 81.9 L350.7 88.6 L346.7 78.1 L342.7 76.3 L338.6 83.2 L334.6 80.8 L330.6 82.3 L326.5 82.7 L322.5 74.2 L318.5 79.2 L314.4 93.1 L310.4 88.1 L306.4 101.1 L302.3 89.2 L298.3 84.5 L294.3 94.3 L290.2 94.2 L286.2 96.2 L282.2 98.4 L278.1 95.7 L274.1 87.9 L270.1 90.9 L266.0 82.1 L262.0 71.2 L258.0 70.7 L254.0 81.8 L249.9 90.9 L245.9 90.0 L241.9 91.3 L237.8 98.8 L233.8 92.0 L229.8 108.4 L225.7 118.5 L221.7 112.6 L217.7 120.5 L213.6 117.2 L209.6 117.6 L205.6 120.2 L201.5 127.9 L197.5 114.7 L193.5 112.4 L189.4 104.0 L185.4 114.6 L181.4 106.9 L177.3 111.7 L173.3 128.7 L169.3 149.7 L165.2 149.8 L161.2 140.7 L157.2 138.5 L153.2 141.4 L149.1 128.8 L145.1 128.6 L141.1 133.7 L137.0 151.2 L133.0 157.3 L129.0 155.4 L124.9 166.5 L120.9 153.0 L116.9 145.5 L112.8 142.5 L108.8 139.4 L104.8 140.5 L100.7 149.9 L96.7 148.9 L92.7 143.9 L88.6 145.8 L84.6 149.3 L80.6 162.4 L76.5 163.0 L72.5 161.6 L68.5 155.5 L64.4 151.1 L60.4 159.1 L56.4 149.5 L52.4 154.0 L48.3 168.7 L44.3 166.4 L40.3 167.7 L36.2 168.3 L32.2 172.0 L28.2 166.4 L24.1 166.0 L20.1 164.4 L16.1 169.4 L12.0 167.2 L8.0 162.4 Z" fill="rgba(138,59,36,.14)"></path>
+              <path d="M8.0 139.7 L12.0 144.4 L16.1 146.7 L20.1 141.7 L24.1 143.4 L28.2 143.8 L32.2 149.5 L36.2 145.9 L40.3 145.3 L44.3 134.1 L48.3 126.5 L52.4 121.9 L56.4 117.5 L60.4 127.3 L64.4 128.9 L68.5 123.9 L72.5 120.7 L76.5 122.4 L80.6 122.0 L84.6 118.2 L88.6 123.9 L92.7 122.0 L96.7 118.2 L100.7 119.3 L104.8 118.8 L108.8 117.7 L112.8 120.8 L116.9 123.9 L120.9 123.0 L124.9 128.4 L129.0 125.8 L133.0 127.8 L137.0 129.8 L141.1 120.3 L145.1 123.0 L149.1 123.1 L153.2 120.2 L157.2 117.3 L161.2 119.6 L165.2 121.3 L169.3 121.3 L173.3 107.7 L177.3 97.9 L181.4 93.1 L185.4 93.7 L189.4 90.1 L193.5 91.6 L197.5 94.0 L201.5 107.2 L205.6 99.6 L209.6 97.0 L213.6 96.7 L217.7 100.0 L221.7 92.2 L225.7 91.9 L229.8 81.9 L233.8 77.6 L237.8 72.6 L241.9 71.0 L245.9 75.5 L249.9 81.9 L254.0 78.2 L258.0 72.4 L262.0 67.2 L266.0 67.3 L270.1 70.9 L274.1 73.0 L278.1 75.8 L282.2 78.6 L286.2 76.4 L290.2 69.7 L294.3 65.3 L298.3 60.3 L302.3 65.1 L306.4 72.7 L310.4 64.2 L314.4 73.6 L318.5 68.0 L322.5 67.0 L326.5 71.2 L330.6 74.6 L334.6 72.9 L338.6 71.3 L342.7 64.3 L346.7 66.0 L350.7 69.5 L354.8 62.8 L358.8 60.5 L362.8 65.0 L366.8 58.9 L370.9 54.1 L374.9 56.6 L378.9 57.5 L383.0 55.0 L387.0 54.6 L391.0 57.6 L395.1 50.8 L399.1 46.5 L403.1 47.0 L407.2 33.2 L411.2 34.9 L415.2 37.5 L419.3 45.1 L423.3 46.8 L427.3 51.5 L431.4 49.2 L435.4 51.7 L439.4 55.0 L443.5 52.9 L447.5 48.2 L451.5 38.9 L455.6 36.2 L459.6 42.3 L463.6 43.5 L467.6 36.1 L471.7 37.2 L475.7 37.6 L479.7 33.6 L483.8 33.8 L487.8 37.2 L491.8 38.6 L495.9 33.5 L499.9 39.7 L503.9 42.3 L508.0 47.9 L512.0 53.8" fill="none" stroke="#8a8376" stroke-width="1.4" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path>
+              <path d="M8.0 139.7 L12.0 144.4 L16.1 146.7 L20.1 141.7 L24.1 143.4 L28.2 143.8 L32.2 149.5 L36.2 145.9 L40.3 145.3 L44.3 144.1 L48.3 146.4 L52.4 131.7 L56.4 127.3 L60.4 136.9 L64.4 128.9 L68.5 133.4 L72.5 139.5 L76.5 141.0 L80.6 140.4 L84.6 127.4 L88.6 123.9 L92.7 122.0 L96.7 127.0 L100.7 128.1 L104.8 118.8 L108.8 117.7 L112.8 120.8 L116.9 123.9 L120.9 131.4 L124.9 145.0 L129.0 134.0 L133.0 135.9 L137.0 129.8 L141.1 112.3 L145.1 107.3 L149.1 107.5 L153.2 120.2 L157.2 117.3 L161.2 119.6 L165.2 128.7 L169.3 128.6 L173.3 107.7 L177.3 90.8 L181.4 86.0 L185.4 93.7 L189.4 83.2 L193.5 91.6 L197.5 94.0 L201.5 107.2 L205.6 99.6 L209.6 97.0 L213.6 96.7 L217.7 100.0 L221.7 92.2 L225.7 98.0 L229.8 88.0 L233.8 71.6 L237.8 78.5 L241.9 71.0 L245.9 69.8 L249.9 70.7 L254.0 61.7 L258.0 50.6 L262.0 51.1 L266.0 62.0 L270.1 70.9 L274.1 68.0 L278.1 75.8 L282.2 78.6 L286.2 76.4 L290.2 74.4 L294.3 74.6 L298.3 64.9 L302.3 69.6 L306.4 81.5 L310.4 68.5 L314.4 73.6 L318.5 59.8 L322.5 54.8 L326.5 63.3 L330.6 63.0 L334.6 61.6 L338.6 63.9 L342.7 57.1 L346.7 58.9 L350.7 69.5 L354.8 62.8 L358.8 57.2 L362.8 61.8 L366.8 52.7 L370.9 54.1 L374.9 56.6 L378.9 54.7 L383.0 49.5 L387.0 49.3 L391.0 52.4 L395.1 45.8 L399.1 41.6 L403.1 42.3 L407.2 26.5 L411.2 30.6 L415.2 31.3 L419.3 39.2 L423.3 39.2 L427.3 44.2 L431.4 42.3 L435.4 48.4 L439.4 50.4 L443.5 48.5 L447.5 44.1 L451.5 36.4 L455.6 33.8 L459.6 40.1 L463.6 41.4 L467.6 33.3 L471.7 37.2 L475.7 37.6 L479.7 34.3 L483.8 33.8 L487.8 37.2 L491.8 38.2 L495.9 33.2 L499.9 39.7 L503.9 42.4 L508.0 48.2 L512.0 53.8" fill="none" stroke="#8a3b24" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+            </svg>
+          </div>
+        </div>
+        <span class="label">Markets · stochastic control</span>
+        <h3>Avellaneda-Stoikov <em>market maker</em></h3>
+        <p>Implementation of the Avellaneda-Stoikov (2008) stochastic-control model. Quotes come from the closed-form HJB solution and are tested against naive fixed-spread quoting with Monte Carlo.</p>
+        <p class="eq">r = s − q·γ·σ²·(T−t) &nbsp;·&nbsp; δ* = γσ²(T−t) + (2/γ)ln(1+γ/k)</p>
+        <div class="tline"><span class="stack">Python · NumPy · Dash</span><span class="links"><a href="https://stellar-faun-e1c90a.netlify.app" target="_blank" rel="noopener">Live demo</a><a href="https://github.com/davina-titus/avellaneda-stoikov" target="_blank" rel="noopener">Code</a></span></div>
+      </article>
 
-    <footer>
-      <span>© 2026 Davina Titus</span>
-      <span>built with caffeine ☕</span>
-    </footer>
-  </main>
+      <article class="tile">
+        <div class="plate" role="img" aria-label="Preview of the ChiMetrics dashboard with tabs for crime, transit, cameras and 311">
+          <div class="cm">
+            <div class="tabs"><span>crime</span><span>transit</span><span class="on">cameras</span><span>311</span></div>
+            <div class="bars"><i style="height:38%"></i><i style="height:52%"></i><i style="height:44%"></i><i style="height:61%"></i><i style="height:57%"></i><i style="height:72%"></i><i class="hl" style="height:94%"></i><i style="height:66%"></i><i style="height:58%"></i><i style="height:49%"></i><i style="height:63%"></i><i style="height:55%"></i></div>
+          </div>
+        </div>
+        <span class="label">Civic data · React</span>
+        <h3>ChiMetrics</h3>
+        <p>A live dashboard over Chicago's open data: crime, CTA ridership, red-light and speed cameras, and 311. Rebuilt from a C++ parser I wrote to analyze the red-light camera dataset.</p>
+        <p class="spec">6 Socrata datasets · auto-refresh · C++ prototype → React</p>
+        <div class="tline"><span class="stack">React · Vite · Recharts · Socrata API</span><span class="links"><a href="https://chi-metrics.vercel.app" target="_blank" rel="noopener">Live site</a><a href="https://github.com/davina-titus/ChiMetrics" target="_blank" rel="noopener">Code</a></span></div>
+      </article>
+
+      <article class="tile">
+        <div class="plate" role="img" aria-label="Preview of FaceCart: a compatibility score ring and ingredient pair checks">
+          <div class="fc">
+            <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#e7dfcd" stroke-width="10"></circle>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#3f6a46" stroke-width="10" stroke-linecap="round" stroke-dasharray="267 314" transform="rotate(-90 60 60)"></circle>
+              <text x="60" y="64" text-anchor="middle" font-family="Instrument Serif, Georgia, serif" font-size="34" fill="#15130f">85</text>
+              <text x="60" y="84" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a8376">/ 100</text>
+            </svg>
+            <div class="pairs">
+              <span><b>niacinamide</b> + hyaluronic <b class="ok">✓</b></span>
+              <span><b>retinol</b> + AHA <b class="bad">conflict</b></span>
+              <span><b>vitamin C</b> + SPF <b class="ok">✓</b></span>
+            </div>
+          </div>
+        </div>
+        <span class="label">Hackathon · SparkHacks 2026</span>
+        <h3>FaceCart</h3>
+        <p>Full-stack AI skincare app built by a team of four in 24 hours. I led the team and built the conflict-detection engine that scores product compatibility.</p>
+        <p class="spec">40+ products · 200+ ingredient pairs · 0–100 score</p>
+        <div class="tline"><span class="stack">TypeScript · Node · Express · GPT-4</span><span class="links"><a href="https://github.com/davina-titus/facecartApp" target="_blank" rel="noopener">Code</a></span></div>
+      </article>
+
+      <article class="tile">
+        <div class="plate" role="img" aria-label="Preview of ParallelYou: one starting point branching into three career timelines">
+          <div class="py">
+            <svg viewBox="0 0 520 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <path d="M40 160 C 160 160, 200 70, 470 60" fill="none" stroke="#8a3b24" stroke-width="2.2"></path>
+              <path d="M40 160 C 160 160, 220 150, 470 145" fill="none" stroke="#15130f" stroke-width="2.2"></path>
+              <path d="M40 160 C 160 160, 200 240, 470 235" fill="none" stroke="#3f6a46" stroke-width="2.2"></path>
+              <circle cx="40" cy="160" r="7" fill="#15130f"></circle>
+              <circle cx="470" cy="60" r="5" fill="#8a3b24"></circle><circle cx="470" cy="145" r="5" fill="#15130f"></circle><circle cx="470" cy="235" r="5" fill="#3f6a46"></circle>
+              <text x="40" y="190" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13" fill="#8a8376">you</text>
+              <text x="462" y="44" text-anchor="end" font-family="Instrument Serif, Georgia, serif" font-size="20" fill="#15130f">the founder</text>
+              <text x="462" y="129" text-anchor="end" font-family="Instrument Serif, Georgia, serif" font-size="20" fill="#15130f">the engineer</text>
+              <text x="462" y="266" text-anchor="end" font-family="Instrument Serif, Georgia, serif" font-size="20" fill="#15130f">the researcher</text>
+            </svg>
+          </div>
+        </div>
+        <span class="label">Applied AI · LLMs</span>
+        <h3>ParallelYou</h3>
+        <p>LLM-driven simulator that generates three distinct career trajectories from a user profile, with salary projections and head-to-head comparison.</p>
+        <p class="spec">Claude API · 3 trajectories · 20-year projections</p>
+        <div class="tline"><span class="stack">Claude API · React</span><span class="links"><a href="https://youtu.be/glDdiWyR_kc" target="_blank" rel="noopener">Demo video</a><a href="https://github.com/davina-titus/parallel-you" target="_blank" rel="noopener">Code</a></span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="shead"><h2><span class="cm-l">//</span>About</h2></div>
+    <div class="about">
+      <div class="prose">
+        <p>I'm a sophomore in Computer Science (Software Engineering) at the University of Illinois Chicago, minoring in Economics, on the Dean's List.</p>
+        <p>I'm most interested in <em>performance-sensitive systems</em>, <em>probabilistic models</em>, and <em>evaluating AI</em>: how fast something runs, how it behaves under uncertainty, and whether a model's output can be trusted.</p>
+      </div>
+      <div class="kit">
+        <span class="label">Math</span>
+        <p>Calculus I–III, Linear Algebra, Differential Equations, Mathematical Foundations of Computing</p>
+        <span class="label">CS</span>
+        <p>Data Structures, Languages &amp; Automata, Program Design II, Programming Practicum</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="path">
+    <div class="shead"><h2><span class="cm-l">//</span>Experience</h2></div>
+    <div class="split">
+      <ol class="tl">
+        <li><span class="when">Aug 2026 — Present</span><div><b>Undergraduate Math Teaching Assistant</b><span class="cur">now</span><br><span>University of Illinois Chicago</span></div></li>
+        <li><span class="when">Aug 2026 — Present</span><div><b>Founding Ambassador</b><span class="cur">now</span><br><span>E.M.B.E.R.</span></div></li>
+        <li><span class="when">Jul 2026 — Aug 2026</span><div><b>AI Engineer Intern</b><br><span>AI Decoder Academy</span></div></li>
+        <li><span class="when">May 2026 — Jun 2026</span><div><b>R&amp;D Intern</b><br><span>Learning + Interest + Technology (LIT) Lab, University of Illinois Chicago</span></div></li>
+        <li><span class="when">Jun 2025 — Sep 2026</span><div><b>AI Model Trainer</b><br><span>Handshake</span></div></li>
+        <li><span class="when">May 2025 — Apr 2026</span><div><b>AI/ML Fellow</b><br><span>Break Through Tech @ Cornell Tech</span></div></li>
+        <li><span class="when">Jun 2025 — Aug 2025</span><div><b>Software Engineer Intern</b><br><span>EY</span></div></li>
+      </ol>
+      <div class="kit">
+        <span class="label">Languages</span>
+        <p>C++, Python, C, JavaScript, TypeScript, SQL</p>
+        <span class="label">Systems and tooling</span>
+        <p>CMake, Git, GitHub Actions, sanitizers, Node, React</p>
+        <span class="label">Data and AI</span>
+        <p>NumPy, Monte Carlo simulation, LLM integration, prompt engineering, model benchmarking</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="beyond">
+    <div class="shead"><h2><span class="cm-l">//</span>Outside of code</h2></div>
+    <div class="beyond">
+      <div><h3>Painting</h3><p>Give me a canvas and a messy palette and I'll lose track of time. My favorite way to switch off.</p></div>
+      <div><h3>Art for a Cause</h3><p>During COVID I started selling my art as prints and gave part of each sale to ACCESS.</p></div>
+      <div><h3>Piano / Keyboard</h3><p>I've been playing since I was 8.</p><p class="ach">Trinity College London Grade 3</p></div>
+      <div><h3>Track &amp; Badminton</h3><p>I'll happily take you on in a rally, then race you to the snacks.</p><p class="ach">Competed at state championships in high school</p></div>
+      <div><h3>Travel</h3><p>Collector of passport stamps and window seats.</p></div>
+      <div><h3>Clash Royale</h3><p>Yes, I'm the one spamming the laughing emote.</p><p class="ach">Max trophies</p></div>
+    </div>
+  </section>
+
+  <div class="contact" id="contact">
+    <span class="label">Contact</span>
+    <p class="big">Get in touch</p>
+    <div class="crow">
+      <button class="copy" id="copyBtn" type="button">Copy my email</button>
+      <span id="email" style="user-select:all">davina.t.titus@gmail.com</span>
+      <a href="https://www.linkedin.com/in/davina-titus/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/davina-titus" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+
+  <footer><span>© 2026 Davina Titus · Chicago</span><span>Built with caffeine</span></footer>
 </div>
 
 <script>
 document.getElementById('copyBtn').addEventListener('click', function(){
-  var btn=this, el=document.getElementById('email'), txt=el.textContent;
-  function done(){btn.textContent='copied ✓';setTimeout(function(){btn.textContent='copy email'},1800)}
-  function fallback(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='email selected'}
-  try{navigator.clipboard.writeText(txt).then(done,fallback)}catch(e){fallback()}
+  var btn = this, el = document.getElementById('email'), txt = el.textContent;
+  function done(){ btn.textContent = 'Copied'; setTimeout(function(){ btn.textContent = 'Copy my email'; }, 1600); }
+  function fallback(){ var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Email selected'; }
+  try { navigator.clipboard.writeText(txt).then(done, fallback); } catch(e) { fallback(); }
 });
 </script>
-<button class="skip" id="skipIntro" type="button">skip intro ↵</button>
-<script>
-(function(){
-  var root = document.documentElement;
-  var reduce = false;
-  try { reduce = matchMedia('(prefers-reduced-motion: reduce)').matches; } catch(e) {}
-  var hello = document.querySelector('.hello'), h1 = document.querySelector('aside h1');
-  if (reduce || !hello || !h1 || !h1.firstChild || h1.firstChild.nodeType !== 3) return;
 
-  // everything after the name settles in, in reading order
-  var order = ['aside .title','aside .sub','aside .status','aside .toc','aside .socials','aside .email','#about','#experience','#projects','#skills','#education','#beyond','main footer'];
-  var els = [];
-  order.forEach(function(sel){ var el = document.querySelector(sel); if (el){ el.classList.add('reveal'); els.push(el); } });
-  els.forEach(function(el, i){ el.style.setProperty('--d', (i < 6 ? i * 70 : 420 + (i - 6) * 60) + 'ms'); });
-
-  var helloText = hello.textContent, nameNode = h1.firstChild, nameText = nameNode.nodeValue;
-  var timers = [], finished = false;
-  root.classList.add('intro');
-  hello.textContent = ''; nameNode.nodeValue = '';
-
-  function finish(){
-    if (finished) return; finished = true;
-    timers.forEach(clearTimeout);
-    hello.textContent = helloText; nameNode.nodeValue = nameText;
-    root.classList.remove('intro');
-    setTimeout(function(){ els.forEach(function(el){ el.style.removeProperty('--d'); }); }, 1400);
-    window.removeEventListener('keydown', onKey);
-  }
-  function onKey(e){ if (e.key === 'Enter' || e.key === 'Escape' || e.key === ' ') finish(); }
-
-  var t = 250;
-  helloText.split('').forEach(function(_, i){ t += 28; timers.push(setTimeout(function(){ hello.textContent = helloText.slice(0, i + 1); }, t)); });
-  t += 220;
-  nameText.split('').forEach(function(_, i){ t += 65 + (nameText[i] === ' ' ? 60 : 0); timers.push(setTimeout(function(){ nameNode.nodeValue = nameText.slice(0, i + 1); }, t)); });
-  timers.push(setTimeout(finish, t + 260));
-  setTimeout(finish, 4000); // safety net: never leave the page hidden
-
-  document.getElementById('skipIntro').addEventListener('click', finish);
-  window.addEventListener('keydown', onKey);
-})();
-</script>
-
-</body>
-</html>
+</body></html>
