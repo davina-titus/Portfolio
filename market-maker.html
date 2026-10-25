@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Testing a Market-Making Model</title>
+<meta name="description" content="Implementing the Avellaneda-Stoikov market-making model in Python and testing it against naive quoting with Monte Carlo simulation.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Testing the Avellaneda-Stoikov market-making model">
+<meta property="og:description" content="Inventory-aware quoting vs. a naive fixed spread, across hundreds of simulated trading sessions.">
+<meta property="og:url" content="https://davinatitus.com/market-maker.html">
+<meta property="og:image" content="https://davinatitus.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="article.css">
+</head>
+<body>
+<div class="page">
+  <header class="mast">
+    <a class="me" href="index.html">Davina Titus</a>
+    <nav aria-label="Site"><a href="index.html#work">Work</a><a href="orderbook.html">Order book</a><a href="index.html#contact">Contact</a></nav>
+  </header>
+
+  <header class="head">
+    <span class="label">Write-up · Python · Stochastic control</span>
+    <h1>Testing a market-making <em>model</em></h1>
+    <p class="dek">A market maker earns the spread but carries inventory risk. I implemented the classic model for balancing the two, then tried to see if it holds up.</p>
+    <div class="meta"><a href="https://github.com/davina-titus/avellaneda-stoikov" target="_blank" rel="noopener">Code ↗</a><a href="https://stellar-faun-e1c90a.netlify.app" target="_blank" rel="noopener">Live demo ↗</a><span>Avellaneda &amp; Stoikov (2008)</span></div>
+  </header>
+
+  <article>
+    <h2><span class="n">01</span>The problem</h2>
+    <p>A market maker posts a bid and an ask at the same time and profits from the gap between them. The catch is inventory. If I buy at my bid and the price then drops, I lose more than the spread I earned. Quote too wide and nobody trades with me; quote too tight and I take on risk for almost nothing.</p>
+    <p>In 2008, Marco Avellaneda and Sasha Stoikov solved this as an optimal control problem and got a closed-form answer. I wanted to implement it and check whether it actually beats the obvious strategy.</p>
+
+    <h2><span class="n">02</span>The model</h2>
+    <p>The setup has three pieces:</p>
+    <ul>
+      <li>The mid price moves randomly, as Brownian motion with volatility <code>σ</code>.</li>
+      <li>Buyers and sellers arrive at random. The further my quote sits from the mid, the less often it fills: the arrival rate is <code>λ(δ) = A·e^(−kδ)</code>.</li>
+      <li>The market maker is risk-averse, with a risk-aversion parameter <code>γ</code>.</li>
+    </ul>
+    <p>Solving the resulting Hamilton-Jacobi-Bellman equation gives two formulas:</p>
+<pre><code><span class="c"># reservation price: where I'd be indifferent, given my inventory q</span>
+r  = s − q·γ·σ²·(T − t)
+
+<span class="c"># optimal total spread around r</span>
+δ* = γ·σ²·(T − t) + (2/γ)·ln(1 + γ/k)
+
+bid = r − δ*/2      ask = r + δ*/2</code></pre>
+    <p class="callout">The key idea: when I'm holding inventory, I shift both quotes so the market is more likely to take it off my hands.</p>
+    <p>If I'm long (q &gt; 0), the reservation price drops below the mid, so my ask gets cheaper and my bid less attractive. That nudges my position back toward zero. The <code>(T − t)</code> term also means I care less about inventory risk near the end of the session, so the spread tightens.</p>
+
+    <h2><span class="n">03</span>The simulation</h2>
+    <p>I simulate a session of length <code>T = 1</code> in 1,000 steps. At each step the mid price takes a random step, and each of my quotes fills with probability <code>1 − e^(−λ(δ)·dt)</code>, the exact probability of at least one arrival in that interval. Inventory is capped at ±5.</p>
+    <p>To make the comparison fair, the naive strategy faces the <strong>same price path and the same random order arrivals</strong>. It quotes a fixed symmetric spread around the mid and ignores its inventory. One detail matters here: if each strategy's random numbers were drawn only when needed, the two would end up consuming different random streams and the comparison would stop being apples to apples. So every step draws all of them, whether or not they get used.</p>
+
+    <h2><span class="n">04</span>Results</h2>
+    <p>One path can be luck, so I ran 300 independent sessions for each setting and averaged. These numbers use the default parameters in my code, with prices normalized to start at 1.</p>
+    <div class="tw"><table>
+      <thead><tr><th>Default settings</th><th class="num">A-S</th><th class="num">Naive</th></tr></thead>
+      <tbody>
+        <tr><td>Mean final PnL</td><td class="num">62.7</td><td class="num">60.2</td></tr>
+        <tr><td>Sharpe ratio</td><td class="num">8.6</td><td class="num">6.6</td></tr>
+        <tr><td>Mean max drawdown</td><td class="num">−1.6</td><td class="num">−3.3</td></tr>
+        <tr><td>Inventory std. dev.</td><td class="num">1.4</td><td class="num">2.2</td></tr>
+        <tr><td>Paths where A-S earns more</td><td class="num" colspan="2">58%</td></tr>
+      </tbody>
+    </table></div>
+    <p>The interesting result isn't that A-S makes more money. It's only slightly ahead on profit, and it loses to naive quoting on about 4 in 10 paths. The real difference is risk: it roughly <strong>halves the drawdown</strong> and keeps inventory much closer to zero, which is exactly what the model is designed to do.</p>
+    <p>Changing the parameters showed when that edge matters most:</p>
+    <div class="tw"><table>
+      <thead><tr><th>Setting</th><th class="num">Sharpe A-S / naive</th><th class="num">Drawdown A-S / naive</th><th class="num">A-S wins</th></tr></thead>
+      <tbody>
+        <tr><td>Calm market (σ = 1)</td><td class="num">9.5 / 8.7</td><td class="num">−1.2 / −1.5</td><td class="num">64%</td></tr>
+        <tr><td>Default (σ = 2, γ = 0.1)</td><td class="num">8.6 / 6.6</td><td class="num">−1.6 / −3.3</td><td class="num">58%</td></tr>
+        <tr><td>Volatile market (σ = 3)</td><td class="num">7.5 / 4.8</td><td class="num">−1.9 / −5.2</td><td class="num">59%</td></tr>
+        <tr><td>More risk-averse (γ = 0.5)</td><td class="num">6.3 / 4.2</td><td class="num">−1.1 / −3.7</td><td class="num">71%</td></tr>
+      </tbody>
+    </table></div>
+    <p>In a calm market the two strategies are close. As volatility or risk aversion goes up, ignoring inventory gets expensive, and the gap in drawdown widens a lot. Sharpe ratios here are in the simulation's own time units, so they're useful for comparing strategies, not as real-world figures.</p>
+
+    <h2><span class="n">05</span>What the model leaves out</h2>
+    <p>Building this made the model's assumptions very concrete:</p>
+    <ul>
+      <li><strong>No adverse selection.</strong> Here, whoever trades with me knows nothing about where the price is going. In real markets, informed traders are exactly the ones who fill your quotes right before the price moves against you.</li>
+      <li><strong>My trades don't move the price.</strong> The mid evolves independently of my orders.</li>
+      <li><strong>Constant volatility and fill rates.</strong> Real markets change their behavior during the day.</li>
+    </ul>
+
+    <h2><span class="n">06</span>What I'd do next</h2>
+    <ul>
+      <li>Add adverse selection, so fills are correlated with the next price move, and see how much of the edge survives.</li>
+      <li>Calibrate <code>σ</code>, <code>A</code> and <code>k</code> from real order book data instead of choosing them.</li>
+      <li>Run the strategy against my own <a href="orderbook.html">C++ order book</a>, so its quotes compete with other orders in an actual book.</li>
+    </ul>
+
+    <div class="next"><a href="orderbook.html">← The order book</a><a href="index.html#work">All projects →</a></div>
+  </article>
+
+  <footer>© 2026 Davina Titus · Chicago</footer>
+</div>
+</body>
+</html>
