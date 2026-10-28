@@ -80,6 +80,8 @@ h1 em{font-style:italic;color:var(--mark)}
 .beyond > div:nth-child(-n+2){border-top:0;padding-top:2px}
 .beyond h3{font-family:var(--serif);font-weight:400;font-size:21px;margin:0 0 2px}
 .beyond p{margin:0;color:var(--ink-2);font-size:15px}
+.beyond .medals{display:flex;gap:8px;margin-top:10px;max-width:380px}
+.beyond .medal{display:block;flex:1;min-width:0;width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:3px;border:1px solid var(--rule)}
 .beyond .ach{font-family:var(--mono);font-size:12px;color:var(--mark);margin-top:6px}
 @media (max-width:560px){.beyond{grid-template-columns:1fr}.beyond > div:nth-child(2){border-top:1px solid var(--rule);padding-top:14px}}
 /* section heads */
@@ -264,7 +266,6 @@ h1 .wd{display:inline-block;white-space:nowrap}
     @keyframes rise-bar{from{transform:scaleY(.05)}to{transform:none}}
     .mm path.res,.py path{stroke-dasharray:1;stroke-dashoffset:1;animation:draw linear both;animation-timeline:view();animation-range:entry 15% cover 45%}
     @keyframes draw{to{stroke-dashoffset:0}}
-    .ring circle:nth-of-type(2){animation:ring linear both;animation-timeline:view();animation-range:entry 20% cover 45%}
     @keyframes ring{from{stroke-dasharray:0 314}to{stroke-dasharray:267 314}}
   }
 }
@@ -282,7 +283,7 @@ h1 .wd{display:inline-block;white-space:nowrap}
   <div class="hero" id="top">
     <h1>Davina Titus</h1>
     <div class="intro">
-      <p>Computer Science (Software Engineering) + Economics. I build full-stack apps and AI tools, and I'm drawn to where code meets markets.</p>
+      <p>Computer Science (Software Engineering) at the University of Illinois Chicago. I build full-stack apps and AI tools, and I'm drawn to where code meets markets.</p>
       <div class="code" role="img" aria-label="Code card: focus on full-stack and applied AI; exploring quant dev and quant trading; clubs WiCS, ACM and SparkHacks; Dean's List.">
         <div class="code-bar"><i></i><i></i><i></i><span>davina.ts</span></div>
 <pre><span class="k">const</span> <span class="p">davina</span> = {
@@ -372,8 +373,8 @@ h1 .wd{display:inline-block;white-space:nowrap}
         <div class="plate" role="img" aria-label="Preview of FaceCart: a compatibility score ring and ingredient pair checks">
           <div class="fc">
             <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
-              <circle cx="60" cy="60" r="50" fill="none" stroke="#e7dfcd" stroke-width="10"></circle>
-              <circle cx="60" cy="60" r="50" fill="none" stroke="#3f6a46" stroke-width="10" stroke-linecap="round" stroke-dasharray="267 314" transform="rotate(-90 60 60)"></circle>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#d9d1c1" stroke-width="10"></circle>
+              <circle class="arc" cx="60" cy="60" r="50" fill="none" stroke="#3f6a46" stroke-width="10" stroke-linecap="round" stroke-dasharray="267 314" transform="rotate(-90 60 60)"></circle>
               <text x="60" y="64" text-anchor="middle" font-family="Instrument Serif, Georgia, serif" font-size="34" fill="#15130f">85</text>
               <text x="60" y="84" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a8376">/ 100</text>
             </svg>
@@ -420,7 +421,7 @@ h1 .wd{display:inline-block;white-space:nowrap}
     <div class="shead"><h2><span class="cm-l">//</span>About</h2></div>
     <div class="about">
       <div class="prose">
-        <p>I'm a junior in Computer Science (Software Engineering) at the University of Illinois Chicago, minoring in Economics, on the Dean's List.</p>
+        <p>I'm a junior in Computer Science (Software Engineering) at the University of Illinois Chicago, and on the Dean's List.</p>
         <p>I'm most interested in <em>performance-sensitive systems</em>, <em>probabilistic models</em>, and <em>evaluating AI</em>: how fast something runs, how it behaves under uncertainty, and whether a model's output can be trusted.</p>
       </div>
       <div class="kit">
@@ -457,10 +458,9 @@ h1 .wd{display:inline-block;white-space:nowrap}
   <section id="beyond">
     <div class="shead"><h2><span class="cm-l">//</span>Outside of code</h2></div>
     <div class="beyond">
-      <div><h3>Painting</h3><p>Give me a canvas and a messy palette and I'll lose track of time. My favorite way to switch off.</p></div>
-      <div><h3>Art for a Cause</h3><p>During COVID I started selling my art as prints and gave part of each sale to ACCESS.</p></div>
+      <div><h3>Painting</h3><p>Give me a canvas and a messy palette and I'll lose track of time. My favorite way to switch off.</p><p class="ach"><a href="art.html">See my art →</a></p></div>
       <div><h3>Piano / Keyboard</h3><p>I've been playing since I was 8.</p><p class="ach">Trinity College London Grade 3</p></div>
-      <div><h3>Track &amp; Badminton</h3><p>I'll happily take you on in a rally, then race you to the snacks.</p><p class="ach">Competed at state championships in high school</p></div>
+      <div><h3>Track &amp; Badminton</h3><p>I'll happily take you on in a rally, then race you to the snacks.</p><p class="ach">Competed at state championships in high school</p><div class="medals"><img class="medal" src="medals.jpg" alt="A pile of athletics medals and ribbons from school meets" loading="lazy"><img class="medal" src="trophies.jpg" alt="A shelf of trophies from school" loading="lazy"></div></div>
       <div><h3>Travel</h3><p>Collector of passport stamps and window seats.</p></div>
       <div><h3>Clash Royale</h3><p>Yes, I'm the one spamming the laughing emote.</p><p class="ach">Max trophies</p></div>
     </div>
@@ -614,6 +614,14 @@ document.getElementById('copyBtn').addEventListener('click', function(){
       var h=sets[ti], top=h.indexOf(Math.max.apply(null,h));
       bars.forEach(function(b,i){ b.style.height=h[i]+'%'; b.classList.toggle('hl', i===top); });
     }, 2600);
+  }
+
+  // FaceCart score ring fills to 85 once, when it first comes into view
+  var arc=document.querySelector('.ring .arc');
+  if (arc && 'IntersectionObserver' in window){
+    arc.style.strokeDasharray='0 314';
+    var ro=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ arc.style.transition='stroke-dasharray 1.4s cubic-bezier(.2,.7,.2,1)'; requestAnimationFrame(function(){ arc.style.strokeDasharray='267 314'; }); ro.disconnect(); } },{threshold:.5});
+    ro.observe(arc);
   }
 
   // order book preview: depth and trades tick live while it's on screen
