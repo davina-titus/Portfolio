@@ -1,6 +1,6 @@
 # davinatitus.com
 
-Personal portfolio of **Davina Titus** — Computer Science (Software Engineering) student at the University of Illinois Chicago, working across HCI research, applied AI, and full-stack development.
+Personal portfolio of **Davina Titus**  Computer Science (Software Engineering) student at the University of Illinois Chicago, working across applied AI, and full-stack development.
 
 🔗 **Live site:** [davinatitus.com](https://davinatitus.com)
 
@@ -8,16 +8,7 @@ Personal portfolio of **Davina Titus** — Computer Science (Software Engineerin
 
 ## About
 
-This site is where I showcase my projects, research, and experience. It's designed around a **dark luxury aesthetic** — deep backgrounds, gold accents, and *Cormorant Garamond* typography — with a focus on giving each project real depth rather than just a thumbnail and a link.
-
-## Featured Projects
-
-| Project | Description |
-|---|---|
-| **ChiMetrics** | Civic data dashboard for exploring Chicago data |
-| **ParallelYou** | Life simulator powered by the Claude API |
-| **FaceCart** | GPT-4 skincare platform built at SparkHacks 2026 |
-| **Temi Robot Dashboard** | Mobile scheduling and reminder dashboard for the Temi in-home social robot (LIT Lab) — served as team captain |
+This site is where I showcase my projects, research, and experience. 
 
 ## Tech Stack
 
