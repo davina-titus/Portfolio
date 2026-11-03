@@ -47,11 +47,6 @@ If the site is plain static HTML, you can instead just open `index.html` in a br
 └── README.md
 ```
 
-## Design Notes
-
-- **Palette:** near-black backgrounds with gold accents for headings, links, and highlights
-- **Typography:** Cormorant Garamond for display text, paired with a clean sans-serif for body copy
-- **Approach:** minimal, editorial layouts that let project write-ups breathe
 
 ## Contact
 
