@@ -251,12 +251,7 @@ h1 .wd{display:inline-block;white-space:nowrap}
 
   /* scroll: sections and tiles settle in as they enter view (browsers without scroll timelines just show everything) */
   @supports (animation-timeline: view()){
-    .shead,.tile,.writing li,.about > *,.split > *,.beyond > div,.contact{animation:settle linear both;animation-timeline:view();animation-range:entry 0% cover 22%}
-    .shead h2{animation:wipe linear both;animation-timeline:view();animation-range:entry 10% cover 25%}
     @keyframes settle{from{opacity:.001;transform:translateY(28px)}to{opacity:1;transform:none}}
-    @keyframes wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
-    .shead{border-top-color:transparent;background:linear-gradient(var(--ink),var(--ink)) 0 0 / 0 1px no-repeat;animation-name:settle,rule}
-    @keyframes rule{from{background-size:0 1px}to{background-size:100% 1px}}
 
     /* project previews come alive */
     .lad .r i{transform-origin:right;animation:grow linear both;animation-timeline:view();animation-range:entry 20% cover 40%}
@@ -594,7 +589,7 @@ document.getElementById('copyBtn').addEventListener('click', function(){
     var seen={};
     var so=new IntersectionObserver(function(es){
       es.forEach(function(e){ seen[e.target.id]=e.isIntersecting; });
-      var cur=null; ['work','about','path','beyond','contact'].forEach(function(id){ if(seen[id] && !cur) cur=id; });
+      var cur=null; ['work','writing','about','path','beyond','contact'].forEach(function(id){ if(seen[id] && !cur) cur=id; });
       Object.keys(links).forEach(function(id){ links[id].classList.toggle('active', id===cur); if(id===cur) links[id].setAttribute('aria-current','true'); else links[id].removeAttribute('aria-current'); });
     },{rootMargin:'-35% 0px -55% 0px'});
     Object.keys(links).forEach(function(id){ var el=document.getElementById(id); if(el) so.observe(el); });
