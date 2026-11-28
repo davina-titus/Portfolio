@@ -269,6 +269,22 @@ h1 .wd{display:inline-block;white-space:nowrap}
     @keyframes ring{from{stroke-dasharray:0 314}to{stroke-dasharray:267 314}}
   }
 }
+/* clickable stat box: big numbers, whole box opens the GitHub repo */
+.stats{display:block;text-decoration:none;color:var(--ink);border:1px solid var(--rule);border-radius:4px;padding:14px 16px 12px;margin-top:4px;background:transparent;
+  transition:border-color .2s,background .2s,transform .25s cubic-bezier(.2,.7,.2,1)}
+.stats:hover{border-color:var(--ink);background:var(--plate);transform:translateY(-2px);color:var(--ink)}
+.stats:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.stats .nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px 20px}
+.tile:not(.wide) .stats .nums{grid-template-columns:repeat(3,minmax(0,1fr))}
+.stats .nums div{min-width:0}
+.stats b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(24px,2.5vw,32px);line-height:1;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.stats .nums span{font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3)}
+.stats .gh{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px;padding-top:10px;border-top:1px solid var(--rule);
+  font-family:var(--mono);font-size:12px;color:var(--ink-2)}
+.stats .gh i{font-style:normal;transition:transform .2s}
+.stats:hover .gh{color:var(--mark)}
+.stats:hover .gh i{transform:translate(2px,-2px)}
+@media (max-width:860px){.stats .nums{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 </head>
 <body>
@@ -331,7 +347,15 @@ h1 .wd{display:inline-block;white-space:nowrap}
           </div>
           <div style="display:flex;flex-direction:column;gap:10px">
             <p>An exchange-style matching engine with price-time priority, limit, market and IOC orders, and prices stored as integer ticks to avoid floating-point error. Tested with 17 unit tests under AddressSanitizer in CI.</p>
-            <p class="spec">insert O(log L) · cancel O(1) · ~3.3M ops/s · p50 ~170 ns</p>
+            <a class="stats" href="https://github.com/davina-titus/orderbook" target="_blank" rel="noopener">
+              <div class="nums">
+                <div><b>~3.3M</b><span>ops / sec</span></div>
+                <div><b>~170 ns</b><span>p50 latency</span></div>
+                <div><b>O(1)</b><span>cancel</span></div>
+                <div><b>17</b><span>unit tests</span></div>
+              </div>
+              <span class="gh"><span>github.com/davina-titus/orderbook</span><i>↗</i></span>
+            </a>
             <div class="tline"><span class="stack">C++17 · CMake · GitHub Actions</span><span class="links"><a href="orderbook.html">Write-up</a><a href="https://courageous-frangollo-012c00.netlify.app" target="_blank" rel="noopener">Live demo</a><a href="https://github.com/davina-titus/orderbook" target="_blank" rel="noopener">Code</a></span></div>
           </div>
         </div>
@@ -351,6 +375,14 @@ h1 .wd{display:inline-block;white-space:nowrap}
         <h3>Avellaneda-Stoikov <em>market maker</em></h3>
         <p>Implementation of the Avellaneda-Stoikov (2008) stochastic-control model. Quotes come from the closed-form HJB solution and are tested against naive fixed-spread quoting with Monte Carlo.</p>
         <p class="eq">r = s − q·γ·σ²·(T−t) &nbsp;·&nbsp; δ* = γσ²(T−t) + (2/γ)ln(1+γ/k)</p>
+        <a class="stats" href="https://github.com/davina-titus/avellaneda-stoikov" target="_blank" rel="noopener">
+          <div class="nums">
+            <div><b>2008</b><span>A–S model</span></div>
+            <div><b>HJB</b><span>closed-form quotes</span></div>
+            <div><b>MC</b><span>vs fixed spread</span></div>
+          </div>
+          <span class="gh"><span>github.com/davina-titus/avellaneda-stoikov</span><i>↗</i></span>
+        </a>
         <div class="tline"><span class="stack">Python · NumPy · Dash</span><span class="links"><a href="market-maker.html">Write-up</a><a href="https://stellar-faun-e1c90a.netlify.app" target="_blank" rel="noopener">Live demo</a><a href="https://github.com/davina-titus/avellaneda-stoikov" target="_blank" rel="noopener">Code</a></span></div>
       </article>
 
@@ -364,7 +396,14 @@ h1 .wd{display:inline-block;white-space:nowrap}
         <span class="label">Civic data · React</span>
         <h3>ChiMetrics</h3>
         <p>A live dashboard over Chicago's open data: crime, CTA ridership, red-light and speed cameras, and 311. Rebuilt from a C++ parser I wrote to analyze the red-light camera dataset.</p>
-        <p class="spec">6 Socrata datasets · auto-refresh · C++ prototype → React</p>
+        <a class="stats" href="https://github.com/davina-titus/ChiMetrics" target="_blank" rel="noopener">
+          <div class="nums">
+            <div><b>6</b><span>Socrata datasets</span></div>
+            <div><b>4</b><span>city views</span></div>
+            <div><b>C++→React</b><span>rebuild</span></div>
+          </div>
+          <span class="gh"><span>github.com/davina-titus/ChiMetrics</span><i>↗</i></span>
+        </a>
         <div class="tline"><span class="stack">React · Vite · Recharts · Socrata API</span><span class="links"><a href="https://chi-metrics.vercel.app" target="_blank" rel="noopener">Live site</a><a href="https://github.com/davina-titus/ChiMetrics" target="_blank" rel="noopener">Code</a></span></div>
       </article>
 
@@ -387,7 +426,14 @@ h1 .wd{display:inline-block;white-space:nowrap}
         <span class="label">Hackathon · SparkHacks 2026</span>
         <h3>FaceCart</h3>
         <p>Full-stack AI skincare app built by a team of four in 24 hours. I led the team and built the conflict-detection engine that scores product compatibility.</p>
-        <p class="spec">40+ products · 200+ ingredient pairs · 0–100 score</p>
+        <a class="stats" href="https://github.com/davina-titus/facecartApp" target="_blank" rel="noopener">
+          <div class="nums">
+            <div><b>24 h</b><span>build</span></div>
+            <div><b>200+</b><span>ingredient pairs</span></div>
+            <div><b>40+</b><span>products</span></div>
+          </div>
+          <span class="gh"><span>github.com/davina-titus/facecartApp</span><i>↗</i></span>
+        </a>
         <div class="tline"><span class="stack">TypeScript · Node · Express · GPT-4</span><span class="links"><a href="https://github.com/davina-titus/facecartApp" target="_blank" rel="noopener">Code</a></span></div>
       </article>
 
@@ -410,7 +456,14 @@ h1 .wd{display:inline-block;white-space:nowrap}
         <span class="label">Applied AI · LLMs</span>
         <h3>ParallelYou</h3>
         <p>LLM-driven simulator that generates three distinct career trajectories from a user profile, with salary projections and head-to-head comparison.</p>
-        <p class="spec">Claude API · 3 trajectories · 20-year projections</p>
+        <a class="stats" href="https://github.com/davina-titus/parallel-you" target="_blank" rel="noopener">
+          <div class="nums">
+            <div><b>3</b><span>career paths</span></div>
+            <div><b>20 yr</b><span>projections</span></div>
+            <div><b>1</b><span>profile in</span></div>
+          </div>
+          <span class="gh"><span>github.com/davina-titus/parallel-you</span><i>↗</i></span>
+        </a>
         <div class="tline"><span class="stack">Claude API · React</span><span class="links"><a href="https://youtu.be/glDdiWyR_kc" target="_blank" rel="noopener">Demo video</a><a href="https://github.com/davina-titus/parallel-you" target="_blank" rel="noopener">Code</a></span></div>
       </article>
     </div>
